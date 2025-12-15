@@ -6,10 +6,15 @@ public class PlayerController : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private Camera PlayerCamera;    
     [SerializeField] private float RotationSpeed = 200f;
-    [SerializeField] private float MaxSpeedOnGround = 6f;
+    [SerializeField] private float MaxSpeedOnGround = 8f;
+    [SerializeField] private float MinSpeedOnGround = 4f;
     [SerializeField] private float MaxSpeedInAir = 4f;
     [SerializeField] private float JumpForce = 9f;
     [SerializeField] private float GravityDownForce = 20f;
+    [SerializeField] private Transform bulletOrigin;
+
+    [Header("Animator")]
+    [SerializeField] private Animator PlayerAnimator;
 
     private CharacterController m_Controller;
     private PlayerInputHandler m_InputHandler;
@@ -26,6 +31,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleCharacterMovement();
+        HandleAnimations();
     }
 
     private void HandleCharacterMovement()
@@ -40,7 +46,15 @@ public class PlayerController : MonoBehaviour
         PlayerCamera.transform.localEulerAngles = new Vector3(m_CameraVerticalAngle, 0f, 0f);
         Vector3 moveInput = m_InputHandler.GetMoveInput();
         Vector3 moveDirection = transform.right * moveInput.x + transform.forward * moveInput.y;
-        float targetSpeed = m_Controller.isGrounded ? MaxSpeedOnGround : MaxSpeedInAir;
+        float targetSpeed;
+        if(m_Controller.isGrounded)
+        {
+            targetSpeed = m_InputHandler.GetSprintInputHeld() ? MaxSpeedOnGround : MinSpeedOnGround;
+        }
+        else
+        {
+            targetSpeed = MaxSpeedInAir;
+        }
 
         Vector3 targetVelocity = moveDirection.normalized * targetSpeed;
         CharacterVelocity.x = targetVelocity.x;
@@ -63,5 +77,20 @@ public class PlayerController : MonoBehaviour
         }
 
         m_Controller.Move(CharacterVelocity * Time.deltaTime);
+    }
+    private void HandleAnimations()
+    {
+        if (PlayerAnimator == null)
+        {
+            return;
+        }
+        Vector3 horizontalVelocity = new Vector3(CharacterVelocity.x, 0f, CharacterVelocity.z);
+        float speed = horizontalVelocity.magnitude;
+        PlayerAnimator.SetBool("isIdle",
+            speed < 0.1f);
+        PlayerAnimator.SetBool("isWalking",
+            speed >= 0.1f && speed <= MinSpeedOnGround);
+        PlayerAnimator.SetBool("isRunning",
+            speed >= MaxSpeedOnGround);
     }
 }

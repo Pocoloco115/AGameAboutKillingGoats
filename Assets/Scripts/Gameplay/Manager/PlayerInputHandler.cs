@@ -7,6 +7,9 @@ public class PlayerInputHandler : MonoBehaviour
     private InputAction moveAction;
     private InputAction lookAction;
     private InputAction jumpAction;
+    private InputAction sprintAction;
+    private InputAction shootAction;
+    private InputAction reloadAction;
 
     public float LookSensitivity = 1f;
 
@@ -17,6 +20,9 @@ public class PlayerInputHandler : MonoBehaviour
         moveAction = playerInput.actions["Move"];
         lookAction = playerInput.actions["Look"];
         jumpAction = playerInput.actions["Jump"];
+        sprintAction = playerInput.actions["Sprint"];
+        shootAction = playerInput.actions["Attack"];
+        reloadAction = playerInput.actions["Reload"];
     }
 
     public Vector2 GetMoveInput()
@@ -37,5 +43,19 @@ public class PlayerInputHandler : MonoBehaviour
     public bool GetJumpInputDown()
     {
         return jumpAction.WasPressedThisFrame();
+    }
+
+    public bool GetSprintInputHeld()
+    {
+        return sprintAction.IsPressed() && GetMoveInput() != Vector2.zero;
+    }
+
+    public bool GetShootInputDown()
+    {
+        return shootAction.WasPressedThisFrame();
+    }
+    public bool GetReloadInputDown()
+    {
+        return reloadAction.WasPressedThisFrame();
     }
 }
