@@ -5,6 +5,7 @@ public class WeaponController : MonoBehaviour
 {
     [Header("Weapon Settings")]
     [SerializeField] private Transform shootOrigin;
+    [SerializeField] private Camera playerCamera;
     [SerializeField] private float range = 100f;
     [SerializeField] private int damage = 10;
     [SerializeField] private int ammo = 30;
@@ -12,7 +13,6 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private PlayerInputHandler m_InputHandler;
 
     [Header("Visual Effects")]
-    [SerializeField] private GameObject muzzleFlashPrefab;
     [SerializeField] private GameObject impactEffectPrefab;
 
     [Header("Animations")]
@@ -43,24 +43,24 @@ public class WeaponController : MonoBehaviour
 
     private void HandleShootWeapon()
     {
-        if(currentAmmo <=0) return;
-        currentAmmo--;
-        if(muzzleFlashPrefab != null && shootOrigin != null)
-        {
-            Instantiate(muzzleFlashPrefab, shootOrigin.position, shootOrigin.rotation);
-        }
+        if (currentAmmo <= 0) return;
 
-        Ray ray = new Ray(shootOrigin.position, shootOrigin.forward);
-        if(Physics.Raycast(ray, out RaycastHit hitInfo, range))
+        currentAmmo--;
+        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, range))
         {
-            if(impactEffectPrefab != null)
+            Vector3 shootDirection = (hitInfo.point - shootOrigin.position).normalized;
+            Debug.DrawRay(shootOrigin.position, shootDirection * range, Color.red, 1f);
+
+            if (impactEffectPrefab != null)
             {
                 Instantiate(impactEffectPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
             }
         }
+
         weaponAnimator.SetTrigger("Fire");
     }
-
     private void ReloadWeapon()
     {
         if(isReloading) return;

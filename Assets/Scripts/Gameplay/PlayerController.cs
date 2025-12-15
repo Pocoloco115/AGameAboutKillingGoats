@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float MaxSpeedInAir = 4f;
     [SerializeField] private float JumpForce = 9f;
     [SerializeField] private float GravityDownForce = 20f;
-    [SerializeField] private Transform bulletOrigin;
+    [SerializeField] public SortingLayer PlayerSortingLayer;
 
     [Header("Animator")]
     [SerializeField] private Animator PlayerAnimator;
