@@ -43,7 +43,7 @@ public class WeaponController : MonoBehaviour
 
     private void HandleShootWeapon()
     {
-        if (currentAmmo <= 0) return;
+        if (IsWeaponEmpty()) return;
 
         currentAmmo--;
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
@@ -66,6 +66,11 @@ public class WeaponController : MonoBehaviour
         }
 
             weaponAnimator.SetTrigger("Fire");
+    }
+
+    public bool IsWeaponEmpty()
+    {
+        return currentAmmo <= 0;
     }
     private void ReloadWeapon()
     {

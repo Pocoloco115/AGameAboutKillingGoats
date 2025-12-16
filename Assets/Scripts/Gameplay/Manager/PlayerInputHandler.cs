@@ -10,6 +10,7 @@ public class PlayerInputHandler : MonoBehaviour
     private InputAction sprintAction;
     private InputAction shootAction;
     private InputAction reloadAction;
+    private InputAction crouchAction;
 
     public float LookSensitivity = 1f;
 
@@ -23,6 +24,7 @@ public class PlayerInputHandler : MonoBehaviour
         sprintAction = playerInput.actions["Sprint"];
         shootAction = playerInput.actions["Attack"];
         reloadAction = playerInput.actions["Reload"];
+        crouchAction = playerInput.actions["Crouch"];
     }
 
     public Vector2 GetMoveInput()
@@ -57,5 +59,9 @@ public class PlayerInputHandler : MonoBehaviour
     public bool GetReloadInputDown()
     {
         return reloadAction.WasPressedThisFrame();
+    }
+    public bool GetCrouchInputToggled()
+    {
+        return crouchAction.WasPressedThisFrame();
     }
 }

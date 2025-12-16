@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController), typeof(PlayerInputHandler))]
+[RequireComponent(typeof(CharacterController), typeof(PlayerInputHandler), typeof(WeaponController))]
 public class PlayerController : MonoBehaviour
 {
     [Header("Settings")]
@@ -8,23 +8,32 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float RotationSpeed = 200f;
     [SerializeField] private float MaxSpeedOnGround = 8f;
     [SerializeField] private float MinSpeedOnGround = 4f;
+    [SerializeField] private float CroachSpeed = 2f;
     [SerializeField] private float MaxSpeedInAir = 4f;
     [SerializeField] private float JumpForce = 9f;
     [SerializeField] private float GravityDownForce = 20f;
-    [SerializeField] private SortingLayer PlayerSortingLayer;
+    [SerializeField] private float MaxCharacterHeight;
+    [SerializeField] private float CrouchHeight;
 
     [Header("Animator")]
     [SerializeField] private Animator PlayerAnimator;
 
     private CharacterController m_Controller;
     private PlayerInputHandler m_InputHandler;
+    private WeaponController m_WeaponController;
     private Vector3 CharacterVelocity;
     private float m_CameraVerticalAngle = 0f;
+    private bool isCrouching = false;
+    private float characterControllerOriginalHeight;
 
     void Start()
     {
         m_Controller = GetComponent<CharacterController>();
         m_InputHandler = GetComponent<PlayerInputHandler>();
+        m_WeaponController = GetComponent<WeaponController>();
+        MaxCharacterHeight = PlayerCamera.transform.localPosition.y;
+        CrouchHeight = MaxCharacterHeight / 2.5f;
+        characterControllerOriginalHeight = m_Controller.height;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -32,6 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         HandleCharacterMovement();
         HandleAnimations();
+        HandleCrouchingInput();
     }
 
     private void HandleCharacterMovement()
@@ -49,7 +59,14 @@ public class PlayerController : MonoBehaviour
         float targetSpeed;
         if(m_Controller.isGrounded)
         {
-            targetSpeed = m_InputHandler.GetSprintInputHeld() ? MaxSpeedOnGround : MinSpeedOnGround;
+            if(isCrouching)
+            {
+                targetSpeed = CroachSpeed;
+            }
+            else
+            {
+                targetSpeed = m_InputHandler.GetSprintInputHeld() ? MaxSpeedOnGround : MinSpeedOnGround;
+            }
         }
         else
         {
@@ -64,7 +81,16 @@ public class PlayerController : MonoBehaviour
         {
             if (m_InputHandler.GetJumpInputDown())
             {
-                CharacterVelocity.y = JumpForce;
+                if(isCrouching)
+                {
+                    isCrouching = false;
+                    m_Controller.height = MaxCharacterHeight;
+                    PlayerCamera.transform.localPosition = new Vector3(PlayerCamera.transform.localPosition.x, MaxCharacterHeight, PlayerCamera.transform.localPosition.z);
+                }
+                else
+                {
+                    CharacterVelocity.y = JumpForce;
+                }
             }
             else
             {
@@ -77,6 +103,23 @@ public class PlayerController : MonoBehaviour
         }
 
         m_Controller.Move(CharacterVelocity * Time.deltaTime);
+    }
+    private void HandleCrouchingInput()
+    {
+        if (m_InputHandler.GetCrouchInputToggled())
+        {
+            isCrouching = !isCrouching;
+            if(isCrouching)
+            {
+                m_Controller.height = CrouchHeight;
+                PlayerCamera.transform.localPosition = new Vector3(PlayerCamera.transform.localPosition.x, CrouchHeight, PlayerCamera.transform.localPosition.z);
+            }
+            else
+            {
+                m_Controller.height = characterControllerOriginalHeight;
+                PlayerCamera.transform.localPosition = new Vector3(PlayerCamera.transform.localPosition.x, MaxCharacterHeight, PlayerCamera.transform.localPosition.z);
+            }
+        }
     }
     private void HandleAnimations()
     {
@@ -91,6 +134,9 @@ public class PlayerController : MonoBehaviour
         PlayerAnimator.SetBool("isWalking",
             speed >= 0.1f && speed <= MinSpeedOnGround);
         PlayerAnimator.SetBool("isRunning",
-            speed >= MaxSpeedOnGround);
+            speed >= MaxSpeedOnGround && 
+            !isCrouching);
+        PlayerAnimator.SetBool("isEmpty",
+            m_WeaponController.IsWeaponEmpty());
     }
 }
