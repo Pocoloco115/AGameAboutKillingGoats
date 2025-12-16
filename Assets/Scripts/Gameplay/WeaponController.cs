@@ -58,8 +58,14 @@ public class WeaponController : MonoBehaviour
                 Instantiate(impactEffectPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
             }
         }
+        else
+        {
+            Vector3 endPoint = ray.origin + ray.direction * range;
+            Vector3 shootDirection = (endPoint - shootOrigin.position).normalized;
+            Debug.DrawRay(shootOrigin.position, shootDirection * range, Color.red, 1f);
+        }
 
-        weaponAnimator.SetTrigger("Fire");
+            weaponAnimator.SetTrigger("Fire");
     }
     private void ReloadWeapon()
     {
