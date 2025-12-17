@@ -50,6 +50,11 @@ public class WeaponController : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo, range))
         {
+            if(hitInfo.collider.CompareTag("Enemy"))
+            {
+                hitInfo.collider.GetComponent<EnemyManager>().TakeDamage();
+            }
+
             Vector3 shootDirection = (hitInfo.point - shootOrigin.position).normalized;
             Debug.DrawRay(shootOrigin.position, shootDirection * range, Color.red, 1f);
 
