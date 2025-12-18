@@ -1,0 +1,59 @@
+using UnityEngine;
+
+public class Health : MonoBehaviour
+{
+    [Header("Health Settings")]
+    [SerializeField] private int maxHealth;
+    [SerializeField] private float maxHeightForFallDamage;
+    private int currentHealth;
+    private Animator animator;
+    private bool isDead = false;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        currentHealth = maxHealth;
+        animator = GetComponent<Animator>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        FallDamage();
+    }
+    public void TakeDamage(int damageAmount)
+    {
+        if(isDead) return;
+        currentHealth -= damageAmount;
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+    private void FallDamage()
+    {
+        Ray ray = new Ray(transform.position, Vector3.down);
+        if (Physics.Raycast(ray, out RaycastHit hitInfo))
+        {
+            float height = transform.position.y - hitInfo.point.y;
+            if (height > maxHeightForFallDamage)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+    private void Die()
+    {
+        if (isDead) return;
+        isDead = true;
+        if (animator != null)
+        {
+            animator.SetTrigger("Die");
+        }
+        GetComponent<Collider>().enabled = false;
+        GetComponent<EnemyManager>().enabled = false;
+    }
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
+    }
+}

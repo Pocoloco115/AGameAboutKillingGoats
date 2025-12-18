@@ -70,7 +70,14 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            targetSpeed = MaxSpeedInAir;
+            if(m_InputHandler.GetSprintInputHeld())
+            {
+                targetSpeed = MaxSpeedOnGround;
+            }
+            else
+            {
+                targetSpeed = MaxSpeedInAir;
+            }
         }
 
         Vector3 targetVelocity = moveDirection.normalized * targetSpeed;
@@ -102,7 +109,11 @@ public class PlayerController : MonoBehaviour
             CharacterVelocity.y -= GravityDownForce * Time.deltaTime;
         }
 
-        m_Controller.Move(CharacterVelocity * Time.deltaTime);
+        CollisionFlags flags = m_Controller.Move(CharacterVelocity * Time.deltaTime);
+        if((flags == CollisionFlags.Above && CharacterVelocity.y > 0f) )
+        {
+            CharacterVelocity.y = 0f;
+        }
     }
     private void HandleCrouchingInput()
     {
