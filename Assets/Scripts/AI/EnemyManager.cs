@@ -3,28 +3,46 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private GameObject player;
     [SerializeField] private float speed = 3f;
+    [SerializeField] private float drag = 0.5f;
+    [SerializeField] private float maxVelocity = 5f;
+    [SerializeField] private float angularDrag = 0.5f;
+
     private Rigidbody enemyRigidbody;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private GameObject player;
+
     void Start()
     {
         enemyRigidbody = GetComponent<Rigidbody>();
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        enemyRigidbody.linearDamping = drag;
+        enemyRigidbody.angularDamping = angularDrag;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         PlayerFollower();
+        LimitVelocity();
     }
 
     private void PlayerFollower()
     {
         enemyRigidbody.transform.LookAt(player.transform);
-        enemyRigidbody.AddForce(enemyRigidbody.transform.forward * speed);
+        enemyRigidbody.AddForce(enemyRigidbody.transform.forward * speed, ForceMode.Acceleration);
     }
+
+    private void LimitVelocity()
+    {
+        if (enemyRigidbody.linearVelocity.magnitude > maxVelocity)
+        {
+            enemyRigidbody.linearVelocity = enemyRigidbody.linearVelocity.normalized * maxVelocity;
+        }
+    }
+
     public void TakeDamage()
     {
+        Object.FindAnyObjectByType<EnemySpawner>().RemoveEnemy(gameObject);
         Destroy(gameObject);
     }
 }

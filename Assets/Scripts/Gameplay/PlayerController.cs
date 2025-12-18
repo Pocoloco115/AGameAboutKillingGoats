@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
                 if(isCrouching)
                 {
                     isCrouching = false;
-                    m_Controller.height = MaxCharacterHeight;
+                    m_Controller.height = characterControllerOriginalHeight;
                     PlayerCamera.transform.localPosition = new Vector3(PlayerCamera.transform.localPosition.x, MaxCharacterHeight, PlayerCamera.transform.localPosition.z);
                 }
                 else
@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
         PlayerAnimator.SetBool("isWalking",
             speed >= 0.1f && speed <= MinSpeedOnGround);
         PlayerAnimator.SetBool("isRunning",
-            speed >= MaxSpeedOnGround && 
+            speed >= MaxSpeedOnGround - 1 && 
             !isCrouching);
         PlayerAnimator.SetBool("isEmpty",
             m_WeaponController.IsWeaponEmpty());
