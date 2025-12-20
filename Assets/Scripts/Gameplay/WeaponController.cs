@@ -52,7 +52,7 @@ public class WeaponController : MonoBehaviour
         {
             if(hitInfo.collider.CompareTag("Enemy"))
             {
-                hitInfo.collider.GetComponent<EnemyManager>().TakeDamage();
+                hitInfo.collider.GetComponent<Health>().TakeDamage(10);
             }
 
             Vector3 shootDirection = (hitInfo.point - shootOrigin.position).normalized;
@@ -70,7 +70,7 @@ public class WeaponController : MonoBehaviour
             Debug.DrawRay(shootOrigin.position, shootDirection * range, Color.red, 1f);
         }
 
-            weaponAnimator.SetTrigger("Fire");
+        weaponAnimator.SetTrigger("Fire");
     }
 
     public bool IsWeaponEmpty()

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -8,11 +9,13 @@ public class Health : MonoBehaviour
     private int currentHealth;
     private Animator animator;
     private bool isDead = false;
+    private bool isPlayer = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
+        isPlayer = gameObject.CompareTag("Player");
     }
 
     // Update is called once per frame
@@ -24,6 +27,7 @@ public class Health : MonoBehaviour
     {
         if(isDead) return;
         currentHealth -= damageAmount;
+        GetComponent<HealManager>()?.OnDamageTaken();
         if (currentHealth <= 0)
         {
             Die();
@@ -45,15 +49,38 @@ public class Health : MonoBehaviour
     {
         if (isDead) return;
         isDead = true;
-        if (animator != null)
-        {
-            animator.SetTrigger("Die");
-        }
-        GetComponent<Collider>().enabled = false;
-        GetComponent<EnemyManager>().enabled = false;
+        GetComponent<DeathManager>()?.SetDeath();
     }
     public void DestroySelf()
     {
-        Destroy(gameObject);
+        if (isPlayer)
+        {
+            Debug.Log("Player has died. Reloading scene...");
+            Invoke(nameof(ReloadScene), 0.01f);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void Heal(int amount)
+    {
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+    }
+    public bool IsDead()
+    {
+        return isDead;
+    }
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+    public int GetMaxHealth()
+    {
+        return maxHealth;
     }
 }

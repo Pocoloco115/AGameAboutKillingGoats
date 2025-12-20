@@ -7,14 +7,15 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float drag = 0.5f;
     [SerializeField] private float maxVelocity = 5f;
     [SerializeField] private float angularDrag = 0.5f;
-
     private Rigidbody enemyRigidbody;
     private GameObject player;
+    private Animator animator;
 
     void Start()
     {
         enemyRigidbody = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
+        animator = GetComponent<Animator>();
 
         enemyRigidbody.linearDamping = drag;
         enemyRigidbody.angularDamping = angularDrag;
@@ -39,10 +40,12 @@ public class EnemyManager : MonoBehaviour
             enemyRigidbody.linearVelocity = enemyRigidbody.linearVelocity.normalized * maxVelocity;
         }
     }
-
-    public void TakeDamage()
+    private void OnCollisionEnter(Collision collision)
     {
-        Object.FindAnyObjectByType<EnemySpawner>().RemoveEnemy(gameObject);
-        Destroy(gameObject);
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Health>()?.TakeDamage(5);
+            GetComponent<Health>()?.TakeDamage(10);
+        }
     }
 }
