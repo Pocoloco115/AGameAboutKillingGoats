@@ -83,9 +83,7 @@ MonoBehaviour:
   speed: 10
   drag: 0
   maxVelocity: 50
-  angularDrag: 0
-  deathAnimation: {fileID: 2711015533030088396, guid: 733b1d7e345ca59428bf3a94b583388d, type: 3}
-  deathAnimationOrigin: {fileID: 2601199287807692838}
+  angularDrag: 10
 --- !u!54 &7554710903109588205
 Rigidbody:
   m_ObjectHideFlags: 0

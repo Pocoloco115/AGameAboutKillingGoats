@@ -26,7 +26,7 @@ public class DeathManager : MonoBehaviour
             if (rb != null)
             {
                 rb.useGravity = false;
-                rb.angularVelocity = Vector3.zero;
+                rb.linearVelocity = Vector3.zero;
             }
             if (col != null)
             {

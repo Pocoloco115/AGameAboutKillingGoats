@@ -27,6 +27,7 @@ public class Health : MonoBehaviour
     {
         if(isDead) return;
         currentHealth -= damageAmount;
+        Object.FindAnyObjectByType<DamageVignette>()?.OnHit();
         GetComponent<HealManager>()?.OnDamageTaken();
         if (currentHealth <= 0)
         {
@@ -55,7 +56,6 @@ public class Health : MonoBehaviour
     {
         if (isPlayer)
         {
-            Debug.Log("Player has died. Reloading scene...");
             Invoke(nameof(ReloadScene), 0.01f);
         }
         else
