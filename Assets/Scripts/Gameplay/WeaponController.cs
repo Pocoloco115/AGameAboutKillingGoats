@@ -52,7 +52,7 @@ public class WeaponController : MonoBehaviour
         {
             if(hitInfo.collider.CompareTag("Enemy"))
             {
-                hitInfo.collider.GetComponent<Health>().TakeDamage(10);
+                hitInfo.collider.GetComponent<Health>().TakeDamage(damage);
             }
 
             Vector3 shootDirection = (hitInfo.point - shootOrigin.position).normalized;

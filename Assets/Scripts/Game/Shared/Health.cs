@@ -52,21 +52,6 @@ public class Health : MonoBehaviour
         isDead = true;
         GetComponent<DeathManager>()?.SetDeath();
     }
-    public void DestroySelf()
-    {
-        if (isPlayer)
-        {
-            Invoke(nameof(ReloadScene), 0.01f);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-    private void ReloadScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
     public void Heal(int amount)
     {
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);

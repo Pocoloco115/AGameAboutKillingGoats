@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class DeathEffectHandler : MonoBehaviour
 {
-    private Health healthComponent;
+    private DeathManager deathManagerComponent;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        healthComponent = GetComponentInParent<Health>();
+        deathManagerComponent = GetComponentInParent<DeathManager>();
     }
 
     // Update is called once per frame
@@ -18,9 +18,10 @@ public class DeathEffectHandler : MonoBehaviour
     }
     public void TriggerDeathEffect()
     {
-        if (healthComponent != null)
+        if (deathManagerComponent != null)
         {
-            healthComponent.DestroySelf();
+            deathManagerComponent.DestroySelf();
+            Destroy(gameObject);
         }
     }
 }
