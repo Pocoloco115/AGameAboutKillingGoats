@@ -24,6 +24,7 @@ public class ControlActionPrefab : MonoBehaviour,
 
     private bool isRebinding = false;
     private Coroutine blinkCoroutine;
+    private KeyCode previousKey;
 
     private void Awake()
     {
@@ -42,6 +43,7 @@ public class ControlActionPrefab : MonoBehaviour,
     private void UpdateKeyText()
     {
         keyText.text = CurrentKey == KeyCode.None ? "?" : CurrentKey.ToString();
+        keyText.color = Color.black; 
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -60,21 +62,24 @@ public class ControlActionPrefab : MonoBehaviour,
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
         if (isRebinding) return;
-
+        if (manager != null && !manager.CanStartRebind(this)) return;
         StartRebind();
     }
+
 
     private void StartRebind()
     {
         isRebinding = true;
-        highlightPanel.SetActive(false);
+        highlightPanel.SetActive(true);
+        previousKey = CurrentKey;
 
-        if (blinkCoroutine != null)
-            StopCoroutine(blinkCoroutine);
+        if (blinkCoroutine != null) StopCoroutine(blinkCoroutine);
 
         blinkCoroutine = StartCoroutine(BlinkKeyText());
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        manager?.NotifyRebindStarted(this);
     }
-
     private IEnumerator BlinkKeyText()
     {
         while (isRebinding)
@@ -100,10 +105,24 @@ public class ControlActionPrefab : MonoBehaviour,
                 return;
             }
 
+            if (manager != null && manager.IsKeyInUse(e.keyCode, this))
+            {
+                keyText.text = "Usado";
+                keyText.color = Color.red;
+                Invoke(nameof(RestorePreviousKey), 1f);
+                return;
+            }
+
             CurrentKey = e.keyCode;
             UpdateKeyText();
             FinishRebind(true);
         }
+    }
+
+    private void RestorePreviousKey()
+    {
+        CurrentKey = previousKey; 
+        UpdateKeyText();
     }
 
     private void FinishRebind(bool changed)
@@ -117,7 +136,11 @@ public class ControlActionPrefab : MonoBehaviour,
         isRebinding = false;
         keyText.enabled = true;
 
-        if (changed)
-            OnKeyChanged?.Invoke();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        manager?.NotifyRebindFinished(this);
+
+        if (changed) OnKeyChanged?.Invoke();
     }
 }

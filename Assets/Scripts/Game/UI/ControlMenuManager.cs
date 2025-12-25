@@ -5,6 +5,7 @@ public class ControlMenuManager : MonoBehaviour
 {
     [SerializeField] private Transform container;
     private List<ControlActionPrefab> actions = new();
+    private ControlActionPrefab currentRebindingAction;
 
     void Start()
     {
@@ -41,4 +42,29 @@ public class ControlMenuManager : MonoBehaviour
         }
         ControlConfigManager.SaveConfig(config);
     }
+    public bool IsKeyInUse(KeyCode key, ControlActionPrefab requester)
+    {
+        foreach (var action in actions)
+        {
+            if (action == requester) continue; 
+            if (action.CurrentKey == key) return true;
+        }
+        return false;
+    }
+    public bool CanStartRebind(ControlActionPrefab requester)
+    {
+        return currentRebindingAction == null || currentRebindingAction == requester;
+    }
+
+    public void NotifyRebindStarted(ControlActionPrefab action)
+    {
+        currentRebindingAction = action;
+    }
+
+    public void NotifyRebindFinished(ControlActionPrefab action)
+    {
+        if (currentRebindingAction == action)
+            currentRebindingAction = null;
+    }
+
 }
