@@ -1,0 +1,32 @@
+ASSET CREDITS
+=============
+
+This project uses third-party 3D assets from Sketchfab
+licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
+
+License:
+https://creativecommons.org/licenses/by/4.0/
+
+--------------------------------------------------
+
+Goat
+Author: Tolibjon
+Source: https://sketchfab.com/3d-models/goat-15692d6248564a19bf2514ce2344ce70
+License: CC BY 4.0
+Changes made: Yes
+
+--------------------------------------------------
+
+Animated FPS Pistol
+Author: Levraicoincoin
+Source: https://sketchfab.com/3d-models/animated-fps-pistol-01ade07ed09445eb8df00d6b7e66e2be
+License: CC BY 4.0
+Changes made: Yes
+
+--------------------------------------------------
+
+Colosseum
+Author: jackcc1
+Source: https://sketchfab.com/3d-models/colosseum-b43c2b3d27c945bb912515e9d5c30ea2
+License: CC BY 4.0
+Changes made: Yes
