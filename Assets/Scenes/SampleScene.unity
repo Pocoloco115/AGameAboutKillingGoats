@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 165825827}
   m_Layer: 0
   m_Name: Plane (4)
-  m_TagString: Untagged
+  m_TagString: DangerZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1126,7 +1126,7 @@ GameObject:
   - component: {fileID: 668665399}
   m_Layer: 0
   m_Name: Plane (5)
-  m_TagString: Untagged
+  m_TagString: DangerZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1532,7 +1532,7 @@ GameObject:
   - component: {fileID: 942858175}
   m_Layer: 0
   m_Name: Plane (3)
-  m_TagString: Untagged
+  m_TagString: DangerZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1954,7 +1954,7 @@ GameObject:
   - component: {fileID: 1202164692}
   m_Layer: 0
   m_Name: Plane (3)
-  m_TagString: Untagged
+  m_TagString: DangerZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2054,7 +2054,7 @@ GameObject:
   - component: {fileID: 1219802152}
   m_Layer: 0
   m_Name: Plane (3)
-  m_TagString: Untagged
+  m_TagString: DangerZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2108,7 +2108,7 @@ GameObject:
   - component: {fileID: 1223114207}
   m_Layer: 0
   m_Name: Plane (2)
-  m_TagString: Untagged
+  m_TagString: DangerZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3120,7 +3120,7 @@ GameObject:
   - component: {fileID: 1325883779}
   m_Layer: 0
   m_Name: Plane (3)
-  m_TagString: Untagged
+  m_TagString: DangerZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3174,7 +3174,7 @@ GameObject:
   - component: {fileID: 1394896936}
   m_Layer: 0
   m_Name: Plane (4)
-  m_TagString: Untagged
+  m_TagString: DangerZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3306,7 +3306,7 @@ GameObject:
   - component: {fileID: 1519039186}
   m_Layer: 0
   m_Name: Plane (3)
-  m_TagString: Untagged
+  m_TagString: DangerZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3562,7 +3562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1732838798
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3761,7 +3761,7 @@ GameObject:
   - component: {fileID: 1961962408}
   m_Layer: 0
   m_Name: Danger Zone
-  m_TagString: Untagged
+  m_TagString: DangerZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3796,7 +3796,7 @@ Transform:
   m_GameObject: {fileID: 1961962407}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2, z: -14}
+  m_LocalPosition: {x: 0, y: -2, z: -14}
   m_LocalScale: {x: 8, y: 1, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3929,7 +3929,7 @@ Transform:
   m_GameObject: {fileID: 2060742928}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.42857, y: 3.03, z: -15.2}
+  m_LocalPosition: {x: -1.42857, y: 4.9, z: -15.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

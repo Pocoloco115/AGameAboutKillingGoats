@@ -9,23 +9,23 @@ public class Health : MonoBehaviour
     private int currentHealth;
     private Animator animator;
     private bool isDead = false;
-    private bool isPlayer = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private float fallStartHeight;
+    private bool isFalling;
+
     void Start()
     {
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
-        isPlayer = gameObject.CompareTag("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        FallDamage();
+        //HandleFallDetection();
     }
+
     public void TakeDamage(int damageAmount)
     {
-        if(isDead) return;
+        if (isDead) return;
         currentHealth -= damageAmount;
         Object.FindAnyObjectByType<DamageVignette>()?.OnHit();
         GetComponent<HealManager>()?.OnDamageTaken();
@@ -34,18 +34,27 @@ public class Health : MonoBehaviour
             Die();
         }
     }
-    private void FallDamage()
+
+    private void HandleFallDetection()
     {
-        Ray ray = new Ray(transform.position, Vector3.down);
-        if (Physics.Raycast(ray, out RaycastHit hitInfo))
+        if (!isFalling && !GetComponent<CharacterController>().isGrounded)
         {
-            float height = transform.position.y - hitInfo.point.y;
-            if (height > maxHeightForFallDamage)
+            isFalling = true;
+            fallStartHeight = transform.position.y;
+        }
+
+        if (isFalling && GetComponent<CharacterController>().isGrounded)
+        {
+            isFalling = false;
+            float fallDistance = fallStartHeight - transform.position.y;
+
+            if (fallDistance > maxHeightForFallDamage)
             {
-                Destroy(gameObject);
+                Die();
             }
         }
     }
+
     private void Die()
     {
         if (isDead) return;
@@ -67,5 +76,12 @@ public class Health : MonoBehaviour
     public int GetMaxHealth()
     {
         return maxHealth;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("DangerZone"))
+        {
+            Die();
+        }
     }
 }

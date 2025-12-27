@@ -20,7 +20,19 @@ public static class ControlConfigManager
         }
         else
         {
-            return new ControlConfig(); 
+            ControlConfig defaultConfig = new ControlConfig();
+            defaultConfig.bindings.Add(new ActionBinding { actionName = "MoveForward", key = KeyCode.W });
+            defaultConfig.bindings.Add(new ActionBinding { actionName = "MoveBackward", key = KeyCode.S });
+            defaultConfig.bindings.Add(new ActionBinding { actionName = "MoveLeft", key = KeyCode.A });
+            defaultConfig.bindings.Add(new ActionBinding { actionName = "MoveRight", key = KeyCode.D });
+            defaultConfig.bindings.Add(new ActionBinding { actionName = "Jump", key = KeyCode.Space });
+            defaultConfig.bindings.Add(new ActionBinding { actionName = "Sprint", key = KeyCode.LeftShift });
+            defaultConfig.bindings.Add(new ActionBinding { actionName = "Attack", key = KeyCode.Mouse0 });
+            defaultConfig.bindings.Add(new ActionBinding { actionName = "Reload", key = KeyCode.R });
+            defaultConfig.bindings.Add(new ActionBinding { actionName = "Crouch", key = KeyCode.C });
+            SaveConfig(defaultConfig);
+            return defaultConfig;
         }
     }
+
 }

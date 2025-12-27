@@ -62,7 +62,7 @@ public class WeaponController : MonoBehaviour
             Vector3 shootDirection = (hitInfo.point - shootOrigin.position).normalized;
             Debug.DrawRay(shootOrigin.position, shootDirection * range, Color.red, 1f);
 
-            if (impactEffectPrefab != null)
+            if (impactEffectPrefab != null && !hitInfo.collider.CompareTag("Top"))
             {
                 Instantiate(impactEffectPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
             }
