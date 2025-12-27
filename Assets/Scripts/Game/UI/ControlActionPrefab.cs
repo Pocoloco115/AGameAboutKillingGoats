@@ -15,6 +15,8 @@ public class ControlActionPrefab : MonoBehaviour,
     [SerializeField] private string actionName;
     [SerializeField] private KeyCode defaultKey = KeyCode.None;
 
+    private Vector3 savedMousePosition;
+
     public string ActionName => actionName;
     public KeyCode CurrentKey { get; private set; }
 
@@ -117,6 +119,36 @@ public class ControlActionPrefab : MonoBehaviour,
             UpdateKeyText();
             FinishRebind(true);
         }
+
+        if (e.type == EventType.MouseDown)
+        {
+            KeyCode mouseKey = KeyCode.None;
+            switch (e.button)
+            {
+                case 0: mouseKey = KeyCode.Mouse0; break;
+                case 1: mouseKey = KeyCode.Mouse1; break;
+                case 2: mouseKey = KeyCode.Mouse2; break;
+                case 3: mouseKey = KeyCode.Mouse3; break;
+                case 4: mouseKey = KeyCode.Mouse4; break;
+                case 5: mouseKey = KeyCode.Mouse5; break;
+                case 6: mouseKey = KeyCode.Mouse6; break;
+            }
+
+            if (mouseKey != KeyCode.None)
+            {
+                if (manager != null && manager.IsKeyInUse(mouseKey, this))
+                {
+                    keyText.text = "Usado";
+                    keyText.color = Color.red;
+                    Invoke(nameof(RestorePreviousKey), 1f);
+                    return;
+                }
+
+                CurrentKey = mouseKey;
+                UpdateKeyText();
+                FinishRebind(true);
+            }
+        }
     }
 
     private void RestorePreviousKey()
@@ -139,8 +171,11 @@ public class ControlActionPrefab : MonoBehaviour,
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
+        highlightPanel.SetActive(false);
+
         manager?.NotifyRebindFinished(this);
 
-        if (changed) OnKeyChanged?.Invoke();
+        if (changed)
+            OnKeyChanged?.Invoke();
     }
 }

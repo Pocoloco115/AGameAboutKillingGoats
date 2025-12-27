@@ -8,7 +8,7 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float range = 100f;
     [SerializeField] private int damage = 10;
-    [SerializeField] private int ammo = 30;
+    [SerializeField] private int ammo = 5;
     [SerializeField] private float reloadTime;
     [SerializeField] private PlayerInputHandler m_InputHandler;
 
@@ -19,6 +19,10 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private Animator weaponAnimator;
     private int currentAmmo;
     private bool isReloading = false;
+    public int CurrentAmmo
+    {
+        get { return currentAmmo; }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

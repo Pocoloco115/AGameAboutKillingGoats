@@ -141,12 +141,12 @@ public class PlayerController : MonoBehaviour
         Vector3 horizontalVelocity = new Vector3(CharacterVelocity.x, 0f, CharacterVelocity.z);
         float speed = horizontalVelocity.magnitude;
         PlayerAnimator.SetBool("isIdle",
-            speed < 0.1f);
+            speed < 0.1f || !m_Controller.isGrounded);
         PlayerAnimator.SetBool("isWalking",
             speed >= 0.1f && speed <= MinSpeedOnGround);
         PlayerAnimator.SetBool("isRunning",
             speed >= MaxSpeedOnGround - 1 && 
-            !isCrouching);
+            (!isCrouching && m_Controller.isGrounded));
         PlayerAnimator.SetBool("isEmpty",
             m_WeaponController.IsWeaponEmpty());
     }

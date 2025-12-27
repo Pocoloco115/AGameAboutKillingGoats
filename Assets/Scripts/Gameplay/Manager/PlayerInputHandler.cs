@@ -16,20 +16,23 @@ public class PlayerInputHandler : MonoBehaviour
 
     void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
+        ControlBindings.Load();
 
+        playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
         lookAction = playerInput.actions["Look"];
-        jumpAction = playerInput.actions["Jump"];
-        sprintAction = playerInput.actions["Sprint"];
-        shootAction = playerInput.actions["Attack"];
-        reloadAction = playerInput.actions["Reload"];
-        crouchAction = playerInput.actions["Crouch"];
     }
-
     public Vector2 GetMoveInput()
     {
-        return moveAction.ReadValue<Vector2>();
+        float x = ControlBindings.GetAxis("Move Left", "Move Right");
+        float y = ControlBindings.GetAxis("Move Backward", "Move Forward");
+
+        Vector2 move = new Vector2(x, y);
+
+        if (move.sqrMagnitude > 1f)
+            move.Normalize();
+
+        return move;
     }
 
     public float GetLookInputsHorizontal()
@@ -44,24 +47,31 @@ public class PlayerInputHandler : MonoBehaviour
 
     public bool GetJumpInputDown()
     {
-        return jumpAction.WasPressedThisFrame();
+        return Input.GetKeyDown(ControlBindings.GetKey("Jump"));
     }
 
     public bool GetSprintInputHeld()
     {
-        return sprintAction.IsPressed() && GetMoveInput() != Vector2.zero;
+        return Input.GetKey(ControlBindings.GetKey("Sprint")) &&
+               GetMoveInput() != Vector2.zero;
     }
 
     public bool GetShootInputDown()
     {
-        return shootAction.WasPressedThisFrame();
+        return Input.GetKeyDown(ControlBindings.GetKey("Fire"));
     }
+
     public bool GetReloadInputDown()
     {
-        return reloadAction.WasPressedThisFrame();
+        return Input.GetKeyDown(ControlBindings.GetKey("Reload"));
     }
+
     public bool GetCrouchInputToggled()
     {
-        return crouchAction.WasPressedThisFrame();
+        return Input.GetKeyDown(ControlBindings.GetKey("Crouch"));
+    }
+    public bool GetCrouchInputHeld()
+    {
+        return Input.GetKey(ControlBindings.GetKey("Crouch"));
     }
 }
