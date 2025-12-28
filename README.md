@@ -1,9 +1,8 @@
 # 🐐 A Game About Killing Goats or Something (Beta)
+![Game Preview](Media/gameplay.gif)
 <p align="center">
   <img src="Media/GOAT logo 2.png" alt="A Game About Killing Goats or Something Logo" width="150"/>
 </p>
-
-![Game Preview](Media/gameplay.gif)
 
 Yes, the title is exactly what it sounds like.  
 **A Game About Killing Goats or Something** is an **arcade FPS** where explosive goats aggressively pursue you for reasons no one fully understands.
@@ -16,9 +15,10 @@ Your mission?
 
 ---
 
-# 🧁 Developed by **Muffin Studios**
+<h1 align="center">🧁 Developed by <b>Muffin Studios</b>(Beta)</h1>
+
 <p align="center">
-  <img src="Media/Muffin studios png logo.png" alt="Muffin Studio Logo" width="150"/>
+  <img src="Media/Muffin studios png logo.png" alt="Muffin Studio Logo" width="200"/>
 </p>
 
 ---
