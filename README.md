@@ -11,7 +11,7 @@ Your mission?
 
 ---
 
-<h1 align="center">🧁 Developed by <b>Muffin Studios</b>(Beta)</h1>
+<h1 align="center">🧁 Developed by <b>Muffin Studios</b> (Beta)</h1>
 
 <div align="center">
   <img src="Media/GOAT logo 2.png" alt="A Game About Killing Goats or Something Logo" width="150" style="display:inline-block; margin-right:20px;"/>
