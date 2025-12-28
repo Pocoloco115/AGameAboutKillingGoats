@@ -84,6 +84,41 @@ The **final version** is planned to be released on **Steam**, assuming the goats
 
 ---
 
+## 🗂 Project Structure
+```text
+Assets/
+│
+├─ Animation/
+│   └─ Controllers/          
+│
+├─ Materials/               
+├─ Models/
+│   ├─ Coliseum/
+│   ├─ Player/
+│   └─ Enemy/
+│
+├─ Prefabs/                
+│   ├─ Player/
+│   ├─ Enemy/
+│   └─ Weapons/             
+│
+├─ Scenes/                  
+├─ Physics Materials/       
+├─ Scripts/
+│   ├─ AI/                   
+│   ├─ Game/
+│   │   ├─ Shared/          
+│   │   └─ UI/               
+│   ├─ Gameplay/             
+│   │   └─ Manager/          
+│
+├─ Settings/                 
+├─ Sprites/                  
+└─ TextMesh Pro/             
+
+Media/                        
+```
+---
 ## 📁 Credits & Attributions
 
 Some 3D models and assets were created by talented people who are **not responsible** for this game’s existence.
