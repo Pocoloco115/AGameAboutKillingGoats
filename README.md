@@ -1,12 +1,7 @@
-<p align="center">
-  <img src="Media/Muffin studios png logo.png" alt="Muffin Studio Logo" width="150"/>
-</p>
-
-<p align="center">
-  <img src="Media/GOAT logo 2.png" alt="A Game About Killing Goats or Something Logo" width="300"/>
-</p>
-
 # 🐐 A Game About Killing Goats or Something (Beta)
+<p align="center">
+  <img src="Media/GOAT logo 2.png" alt="A Game About Killing Goats or Something Logo" width="150"/>
+</p>
 
 ![Game Preview](Media/gameplay.gif)
 
@@ -19,7 +14,12 @@ Your mission?
 > ⚠️ **This is a BETA**  
 > Things may break. Goats may behave strangely. That’s part of the experience.
 
-- Developed by Muffin Studio
+---
+
+# 🧁 Developed by **Muffin Studios**
+<p align="center">
+  <img src="Media/Muffin studios png logo.png" alt="Muffin Studio Logo" width="150"/>
+</p>
 
 ---
 
