@@ -97,11 +97,7 @@ Assets/
 │   ├─ Player/
 │   └─ Enemy/
 │
-├─ Prefabs/                
-│   ├─ Player/
-│   ├─ Enemy/
-│   └─ Weapons/             
-│
+├─ Prefabs/                      
 ├─ Scenes/                  
 ├─ Physics Materials/       
 ├─ Scripts/
