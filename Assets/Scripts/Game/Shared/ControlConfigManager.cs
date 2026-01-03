@@ -30,6 +30,7 @@ public static class ControlConfigManager
             defaultConfig.bindings.Add(new ActionBinding { actionName = "Fire", key = KeyCode.Mouse0 });
             defaultConfig.bindings.Add(new ActionBinding { actionName = "Reload", key = KeyCode.R });
             defaultConfig.bindings.Add(new ActionBinding { actionName = "Crouch", key = KeyCode.C });
+            defaultConfig.sliders.Add(new SliderBinding { sliderName = "Sensitivity", value = 5f });
             SaveConfig(defaultConfig);
             return defaultConfig;
         }
