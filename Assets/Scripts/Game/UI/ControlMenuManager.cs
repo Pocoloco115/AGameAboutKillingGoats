@@ -20,7 +20,7 @@ public class ControlMenuManager : MonoBehaviour
             actions.Add(action);
         }
 
-        var config = ControlConfigManager.LoadConfig();
+        var config = ControlConfigManager.GetConfig();
         foreach (var binding in config.bindings)
         {
             var action = actions.Find(a => a.ActionName == binding.actionName);
@@ -31,7 +31,11 @@ public class ControlMenuManager : MonoBehaviour
 
     private void SaveConfig()
     {
-        var config = new ControlConfig();
+        var config = ControlConfigManager.GetConfig();
+        config.bindings.Clear();
+
+        config.bindings.Clear();
+
         foreach (var action in actions)
         {
             config.bindings.Add(new ActionBinding
@@ -40,8 +44,10 @@ public class ControlMenuManager : MonoBehaviour
                 key = action.CurrentKey
             });
         }
+
         ControlConfigManager.SaveConfig(config);
     }
+
     public bool IsKeyInUse(KeyCode key, ControlActionPrefab requester)
     {
         foreach (var action in actions)

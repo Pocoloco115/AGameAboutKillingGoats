@@ -3,10 +3,19 @@ using System.IO;
 
 public static class ControlConfigManager
 {
+    private static ControlConfig _cached;
     private static string filePath => Path.Combine(Application.persistentDataPath, "controls.json");
+
+    public static ControlConfig GetConfig()
+    {
+        if (_cached == null)
+            _cached = LoadConfig();
+        return _cached;
+    }
 
     public static void SaveConfig(ControlConfig config)
     {
+        _cached = config;
         string json = JsonUtility.ToJson(config, true);
         File.WriteAllText(filePath, json);
     }
@@ -31,9 +40,14 @@ public static class ControlConfigManager
             defaultConfig.bindings.Add(new ActionBinding { actionName = "Reload", key = KeyCode.R });
             defaultConfig.bindings.Add(new ActionBinding { actionName = "Crouch", key = KeyCode.C });
             defaultConfig.sliders.Add(new SliderBinding { sliderName = "Sensitivity", value = 5f });
+
             SaveConfig(defaultConfig);
             return defaultConfig;
         }
     }
 
+    public static void ReloadFromDisk()
+    {
+        _cached = LoadConfig();
+    }
 }

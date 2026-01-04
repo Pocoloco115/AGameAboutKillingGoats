@@ -12,8 +12,8 @@ public class ControlConfig
 [Serializable]
 public class ActionBinding
 {
-    public string actionName;   
-    public KeyCode key;         
+    public string actionName;
+    public KeyCode key;
 }
 
 [Serializable]

@@ -485,6 +485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _slider: {fileID: 876745905}
   _sliderText: {fileID: 68505240}
+  sliderKey: Sensitivity
 --- !u!114 &58430304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3351,7 +3352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e9346622b8ab14198b4bcfdc74d083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ControlMenuManager
-  container: {fileID: 1399210360}
+  container: {fileID: 80517681}
 --- !u!114 &1399210362
 MonoBehaviour:
   m_ObjectHideFlags: 0
