@@ -11,6 +11,8 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private int ammo = 5;
     [SerializeField] private float reloadTime;
     [SerializeField] private PlayerInputHandler m_InputHandler;
+    [SerializeField] private float fireRate = 0.3f;
+    private float nextTimeToFire = 0f;
 
     [Header("Visual Effects")]
     [SerializeField] private GameObject impactEffectPrefab;
@@ -34,9 +36,10 @@ public class WeaponController : MonoBehaviour
     void Update()
     {
         if (isReloading) return;
-        if(m_InputHandler.GetShootInputDown())
+        if(m_InputHandler.GetShootInputDown() && Time.time >= nextTimeToFire)
         {
             HandleShootWeapon();
+            nextTimeToFire = Time.time + fireRate;
         }
         if(m_InputHandler.GetReloadInputDown() && currentAmmo < ammo)
         {
@@ -48,7 +51,7 @@ public class WeaponController : MonoBehaviour
     private void HandleShootWeapon()
     {
         if (IsWeaponEmpty()) return;
-
+        AudioManager.Instance.PlaySFX("Shoot");
         currentAmmo--;
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 

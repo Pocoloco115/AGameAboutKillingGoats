@@ -65,6 +65,7 @@ public class DeathManager : MonoBehaviour
             GetComponent<PlayerInputHandler>().enabled = false;
             GetComponent<PlayerController>().enabled = false;
             GetComponent<CharacterController>().enabled = false;
+            GetComponent<WeaponController>().enabled = false;
             Invoke(nameof(DisplayGameOverPanel), 0.2f);
         }
     }

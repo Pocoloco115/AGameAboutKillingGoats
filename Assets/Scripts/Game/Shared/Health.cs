@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
 
     void Update()
     {
-        //HandleFallDetection();
+        HandleFallDetection();
     }
 
     public void TakeDamage(int damageAmount)
