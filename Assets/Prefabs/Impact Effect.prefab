@@ -981,7 +981,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 10
+        scalar: 30
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -4907,4 +4907,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106b765a9e7a67e48927c6e5367dcbae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ImpactEffectController
-  shootOrigin: {fileID: 0}

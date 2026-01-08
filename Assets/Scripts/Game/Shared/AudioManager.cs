@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
@@ -31,7 +32,7 @@ public class AudioManager : MonoBehaviour
                 { "Button", buttonClip }
             };
 
-            PlayMusic(backgroundMusic);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
@@ -39,11 +40,35 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "SampleScene")
+        {
+            if (!musicSource.isPlaying)
+            {
+                PlayMusic(backgroundMusic);
+            }
+        }
+        else
+        {
+            StopMusic();
+        }
+    }
+
     public void PlayMusic(AudioClip clip)
     {
+        if (clip == null) return;
         musicSource.clip = clip;
         musicSource.loop = true;
         musicSource.Play();
+    }
+
+    public void StopMusic()
+    {
+        if (musicSource.isPlaying)
+        {
+            musicSource.Stop();
+        }
     }
 
     public void PlaySFX(string key)
