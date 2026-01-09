@@ -13,6 +13,7 @@ public class EnemyManager : MonoBehaviour
     private Animator animator;
     public bool isPlayerActive;
     private Vector3 targetPoint;
+    private AudioSource audioSource;
 
     void Start()
     {
@@ -21,7 +22,9 @@ public class EnemyManager : MonoBehaviour
         animator = GetComponent<Animator>();
         enemyRigidbody.linearDamping = drag;
         enemyRigidbody.angularDamping = angularDrag;
+        audioSource = GetComponent<AudioSource>();
         RandomTargetPoint();
+        StartCoroutine(GoatSoundRoutine());
     }
 
     private void FixedUpdate()
@@ -71,6 +74,7 @@ public class EnemyManager : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySFXExclusive("Hit");
             collision.gameObject.GetComponent<Health>()?.TakeDamage(5);
             GetComponent<Health>()?.TakeDamage(10);
         }
@@ -79,4 +83,27 @@ public class EnemyManager : MonoBehaviour
             RandomTargetPoint();
         }
     }
+    private IEnumerator GoatSoundRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2f); 
+
+            int randomValue = Random.Range(1, 6); 
+            if (randomValue == 3) 
+            {
+                PlayGoatSound();
+            }
+        }
+    }
+    private void PlayGoatSound()
+    {
+        if (audioSource != null && !audioSource.isPlaying)
+        {
+            audioSource.clip = AudioManager.Instance.GetSFXClip("Goat");
+            audioSource.Stop();
+            audioSource.Play();
+        }
+    }
+
 }

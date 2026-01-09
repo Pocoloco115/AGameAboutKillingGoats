@@ -848,9 +848,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3581642893986970736, guid: 21771fdac4be715419a3e7d4f1114db4, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581642893986970736, guid: 21771fdac4be715419a3e7d4f1114db4, type: 3}
       propertyPath: m_Resource
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4000228349837551477, guid: 21771fdac4be715419a3e7d4f1114db4, type: 3}
+      propertyPath: hitClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 29517a7d7c66647408856f22361290dd, type: 3}
+    - target: {fileID: 4000228349837551477, guid: 21771fdac4be715419a3e7d4f1114db4, type: 3}
+      propertyPath: goatClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c5b06842f2f4f9d4d8ae915e8e57042d, type: 3}
     - target: {fileID: 4000228349837551477, guid: 21771fdac4be715419a3e7d4f1114db4, type: 3}
       propertyPath: backgroundMusic
       value: 

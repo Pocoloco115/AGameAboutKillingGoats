@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip shootClip;
     [SerializeField] private AudioClip goatClip;
     [SerializeField] private AudioClip buttonClip;
+    [SerializeField] private AudioClip hitClip;
     [SerializeField] private AudioClip backgroundMusic;
 
     private Dictionary<string, AudioClip> sfxLibrary;
@@ -29,7 +30,8 @@ public class AudioManager : MonoBehaviour
             {
                 { "Shoot", shootClip },
                 { "Goat", goatClip },
-                { "Button", buttonClip }
+                { "Button", buttonClip },
+                { "Hit", hitClip }
             };
 
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -77,5 +79,28 @@ public class AudioManager : MonoBehaviour
         {
             sfxSource.PlayOneShot(sfxLibrary[key]);
         }
+    }
+    public void PlaySFXAtPosition(string key, Vector3 position)
+    {
+        if (sfxLibrary.ContainsKey(key))
+        {
+            AudioSource.PlayClipAtPoint(sfxLibrary[key], position);
+        }
+    }
+    public void PlaySFXExclusive(string key)
+    {
+        if (sfxLibrary.ContainsKey(key))
+        {
+            sfxSource.Stop();
+            sfxSource.PlayOneShot(sfxLibrary[key]);
+        }
+    }
+    public AudioClip GetSFXClip(string key)
+    {
+        if (sfxLibrary.ContainsKey(key))
+        {
+            return sfxLibrary[key];
+        }
+        return null;
     }
 }
