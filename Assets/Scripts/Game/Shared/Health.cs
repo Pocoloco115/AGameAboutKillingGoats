@@ -37,13 +37,29 @@ public class Health : MonoBehaviour
 
     private void HandleFallDetection()
     {
-        if (!isFalling && !GetComponent<CharacterController>().isGrounded)
+        bool grounded = false;
+
+        CharacterController controller = GetComponent<CharacterController>();
+        if (controller != null)
+        {
+            grounded = controller.isGrounded;
+        }
+        else
+        {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                grounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
+            }
+        }
+
+        if (!isFalling && !grounded)
         {
             isFalling = true;
             fallStartHeight = transform.position.y;
         }
 
-        if (isFalling && GetComponent<CharacterController>().isGrounded)
+        if (isFalling && grounded)
         {
             isFalling = false;
             float fallDistance = fallStartHeight - transform.position.y;

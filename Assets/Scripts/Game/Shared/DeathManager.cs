@@ -24,6 +24,7 @@ public class DeathManager : MonoBehaviour
     }
     public void SetDeath()
     {
+        AudioManager.Instance.PlaySFXAtPosition("Explosion", transform.position);
         if (!gameObject.CompareTag("Player"))
         {
             if (rb != null)

@@ -16,6 +16,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip buttonClip;
     [SerializeField] private AudioClip hitClip;
     [SerializeField] private AudioClip backgroundMusic;
+    [SerializeField] private AudioClip menuMusic;
+    [SerializeField] private AudioClip emptyShootClip;
+    [SerializeField] private AudioClip explosionClip;
 
     private Dictionary<string, AudioClip> sfxLibrary;
 
@@ -31,10 +34,13 @@ public class AudioManager : MonoBehaviour
                 { "Shoot", shootClip },
                 { "Goat", goatClip },
                 { "Button", buttonClip },
-                { "Hit", hitClip }
+                { "Hit", hitClip },
+                { "EmptyShoot", emptyShootClip },
+                { "Explosion", explosionClip }
             };
 
             SceneManager.sceneLoaded += OnSceneLoaded;
+            PlayMusic(menuMusic);
         }
         else
         {
@@ -46,14 +52,25 @@ public class AudioManager : MonoBehaviour
     {
         if (scene.name == "SampleScene")
         {
-            if (!musicSource.isPlaying)
+            if (musicSource.clip != backgroundMusic)
             {
                 PlayMusic(backgroundMusic);
+            }
+            else if (!musicSource.isPlaying)
+            {
+                musicSource.Play();
             }
         }
         else
         {
-            StopMusic();
+            if (musicSource.clip != menuMusic)
+            {
+                PlayMusic(menuMusic);
+            }
+            else if (!musicSource.isPlaying)
+            {
+                musicSource.Play();
+            }
         }
     }
 

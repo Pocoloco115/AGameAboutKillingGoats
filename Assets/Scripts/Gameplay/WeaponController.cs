@@ -50,7 +50,11 @@ public class WeaponController : MonoBehaviour
 
     private void HandleShootWeapon()
     {
-        if (IsWeaponEmpty()) return;
+        if (IsWeaponEmpty())
+        {
+            AudioManager.Instance.PlaySFX("EmptyShoot");
+            return;
+        }
         AudioManager.Instance.PlaySFX("Shoot");
         currentAmmo--;
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
