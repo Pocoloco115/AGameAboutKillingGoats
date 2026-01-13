@@ -93,6 +93,7 @@ public class WeaponController : MonoBehaviour
         if(isReloading) return;
         if(currentAmmo < 0) return;
         if(currentAmmo == ammo) return;
+        AudioManager.Instance.PlaySFX("Reload");
         StartCoroutine(ReloadCoroutine());
     }
     public void FinishReload()

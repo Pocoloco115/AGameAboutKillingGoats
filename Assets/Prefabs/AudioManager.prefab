@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4483811868892645552}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.579, y: 0, z: 249.33711}
+  m_LocalPosition: {x: -3.65605, y: 0, z: -13.94183}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -48,10 +48,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   musicSource: {fileID: 3581642893986970736}
   sfxSource: {fileID: 6526926517309414506}
-  shootClip: {fileID: 8300000, guid: 67a3c18b88402c746b2581db760be058, type: 3}
-  goatClip: {fileID: 0}
+  shootClip: {fileID: 8300000, guid: 0fcb101cc55942749b69aa0120992852, type: 3}
+  goatClip: {fileID: 8300000, guid: 7eecbe09ea3c47942a320466e21bb5a5, type: 3}
   buttonClip: {fileID: 0}
-  backgroundMusic: {fileID: 0}
+  hitClip: {fileID: 8300000, guid: 7cfc0f4cfb8ede84cb18d59e00fbd1c9, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: a486e3349764c284dbfd5fdfcd8c05a9, type: 3}
+  menuMusic: {fileID: 8300000, guid: 95d024f120e106f4f9022002f63e7a61, type: 3}
+  emptyShootClip: {fileID: 8300000, guid: bec1a633426553448b0f4a55b75753ef, type: 3}
+  explosionClip: {fileID: 8300000, guid: a7e47aef6f8abb74faed7b091a2ecc7c, type: 3}
+  reloadClip: {fileID: 8300000, guid: 45b84f88b3a049e4d9209f9e28c10059, type: 3}
 --- !u!82 &6526926517309414506
 AudioSource:
   m_ObjectHideFlags: 0
@@ -160,9 +165,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 95d024f120e106f4f9022002f63e7a61, type: 3}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0

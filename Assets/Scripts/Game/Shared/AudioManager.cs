@@ -19,6 +19,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip menuMusic;
     [SerializeField] private AudioClip emptyShootClip;
     [SerializeField] private AudioClip explosionClip;
+    [SerializeField] private AudioClip reloadClip;
 
     private Dictionary<string, AudioClip> sfxLibrary;
 
@@ -36,7 +37,8 @@ public class AudioManager : MonoBehaviour
                 { "Button", buttonClip },
                 { "Hit", hitClip },
                 { "EmptyShoot", emptyShootClip },
-                { "Explosion", explosionClip }
+                { "Explosion", explosionClip },
+                { "Reload", reloadClip }
             };
 
             SceneManager.sceneLoaded += OnSceneLoaded;
