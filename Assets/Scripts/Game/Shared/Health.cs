@@ -33,6 +33,10 @@ public class Health : MonoBehaviour
         {
             Die();
         }
+        if (gameObject.CompareTag("Player"))
+        {
+            AudioManager.Instance.PlaySFXExclusive("Hit");
+        }
     }
 
     private void HandleFallDetection()

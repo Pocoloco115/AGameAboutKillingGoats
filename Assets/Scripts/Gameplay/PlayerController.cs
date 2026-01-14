@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private float m_CameraVerticalAngle = 0f;
     private bool isCrouching = false;
     private float characterControllerOriginalHeight;
+
     void Start()
     {
         m_Controller = GetComponent<CharacterController>();

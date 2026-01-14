@@ -62,6 +62,7 @@ public class DeathManager : MonoBehaviour
     {
         if(gameOverPanel != null)
         {
+            AudioManager.Instance.StopSFX();
             UnityEngine.Cursor.lockState = CursorLockMode.None;
             GetComponent<PlayerInputHandler>().enabled = false;
             GetComponent<PlayerController>().enabled = false;

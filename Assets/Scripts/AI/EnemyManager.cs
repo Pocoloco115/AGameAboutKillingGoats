@@ -74,7 +74,6 @@ public class EnemyManager : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            AudioManager.Instance.PlaySFXExclusive("Hit");
             collision.gameObject.GetComponent<Health>()?.TakeDamage(5);
             GetComponent<Health>()?.TakeDamage(10);
         }

@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Sources")]
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioSource exclusiveSource;
 
     [Header("Clips")]
     [SerializeField] private AudioClip shootClip;
@@ -52,6 +53,11 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if(exclusiveSource.isPlaying)
+        {
+            exclusiveSource.Stop();
+        }
+
         if (scene.name == "SampleScene")
         {
             if (musicSource.clip != backgroundMusic)
@@ -110,8 +116,8 @@ public class AudioManager : MonoBehaviour
     {
         if (sfxLibrary.ContainsKey(key))
         {
-            sfxSource.Stop();
-            sfxSource.PlayOneShot(sfxLibrary[key]);
+            exclusiveSource.Stop();
+            exclusiveSource.PlayOneShot(sfxLibrary[key]);
         }
     }
     public AudioClip GetSFXClip(string key)
@@ -121,5 +127,9 @@ public class AudioManager : MonoBehaviour
             return sfxLibrary[key];
         }
         return null;
+    }
+    public void StopSFX()
+    {
+        sfxSource.Stop();
     }
 }
