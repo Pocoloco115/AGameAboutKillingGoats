@@ -21,7 +21,7 @@ public static class ControlBindings
 
     public static void Load()
     {
-        var config = ControlConfigManager.GetConfig();
+        var config = ConfigManager.GetConfig();
 
         bindings = new Dictionary<string, KeyCode>();
         foreach (var b in config.bindings)
@@ -33,7 +33,7 @@ public static class ControlBindings
 
     public static void Reload()
     {
-        ControlConfigManager.ReloadFromDisk();
+        ConfigManager.ReloadFromDisk();
         Load();
     }
 

@@ -6,7 +6,7 @@ public class SliderManager : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
     [SerializeField] private TextMeshProUGUI _sliderText;
-    [SerializeField] private string sliderKey = "Sensitivity";
+    [SerializeField] private string sliderKey;
 
     private ControlConfig config;
     private SliderBinding binding;
@@ -14,7 +14,7 @@ public class SliderManager : MonoBehaviour
     void Start()
     {
         Debug.Log(Application.persistentDataPath);
-        config = ControlConfigManager.GetConfig();
+        config = ConfigManager.GetConfig();
         binding = config.sliders.Find(s => s.sliderName == sliderKey);
 
         if (binding == null)
@@ -29,10 +29,16 @@ public class SliderManager : MonoBehaviour
         _slider.onValueChanged.AddListener((v) =>
         {
             _sliderText.text = v.ToString("0");
-            var binding = ControlConfigManager.GetConfig().sliders.Find(s => s.sliderName == sliderKey);
+            var binding = ConfigManager.GetConfig().sliders.Find(s => s.sliderName == sliderKey);
             if (binding != null) binding.value = v;
 
-            ControlConfigManager.SaveConfig(ControlConfigManager.GetConfig());
+            ConfigManager.SaveConfig(ConfigManager.GetConfig());
+
+            if(AudioManager.Instance != null)
+            {
+                AudioManager.Instance.ApplyVolumes();
+            }
+               
         });
     }
 }

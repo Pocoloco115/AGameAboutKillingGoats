@@ -23,6 +23,7 @@ public class EnemyManager : MonoBehaviour
         enemyRigidbody.linearDamping = drag;
         enemyRigidbody.angularDamping = angularDrag;
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = AudioManager.Instance.SFXSourceVol;
         RandomTargetPoint();
         StartCoroutine(GoatSoundRoutine());
     }

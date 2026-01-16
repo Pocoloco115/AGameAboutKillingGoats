@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource exclusiveSource;
+    [SerializeField] private AudioSource UISource;
 
     [Header("Clips")]
     [SerializeField] private AudioClip shootClip;
@@ -22,6 +23,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip explosionClip;
     [SerializeField] private AudioClip reloadClip;
 
+    public float SFXSourceVol => sfxSource.volume;
     private Dictionary<string, AudioClip> sfxLibrary;
 
     void Awake()
@@ -43,12 +45,27 @@ public class AudioManager : MonoBehaviour
             };
 
             SceneManager.sceneLoaded += OnSceneLoaded;
+            ApplyVolumes();
             PlayMusic(menuMusic);
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+    public void ApplyVolumes()
+    {
+        var config = ConfigManager.GetConfig();
+
+        float masterVol = (config.sliders.Find(s => s.sliderName == "MasterVol")?.value ?? 10f) / 10f;
+        float musicVol = (config.sliders.Find(s => s.sliderName == "MusicVol")?.value ?? 10f) / 10f;
+        float sfxVol = (config.sliders.Find(s => s.sliderName == "SFXVol")?.value ?? 10f) / 10f;
+        float uiVol = (config.sliders.Find(s => s.sliderName == "UIVol")?.value ?? 10f) / 10f;
+
+        musicSource.volume = masterVol * musicVol;
+        sfxSource.volume = masterVol * sfxVol;
+        exclusiveSource.volume = masterVol * sfxVol; 
+        UISource.volume = masterVol * uiVol;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -109,7 +126,21 @@ public class AudioManager : MonoBehaviour
     {
         if (sfxLibrary.ContainsKey(key))
         {
-            AudioSource.PlayClipAtPoint(sfxLibrary[key], position);
+            GameObject tempGO = new GameObject("TempAudio");
+            tempGO.transform.position = position;
+
+            AudioSource aSource = tempGO.AddComponent<AudioSource>();
+            aSource.clip = sfxLibrary[key];
+
+            aSource.volume = sfxSource.volume;
+
+            aSource.spatialBlend = 1f; 
+            aSource.minDistance = 5f;  
+            aSource.maxDistance = 30f; 
+            aSource.rolloffMode = AudioRolloffMode.Logarithmic; 
+
+            aSource.Play();
+            Destroy(tempGO, aSource.clip.length);
         }
     }
     public void PlaySFXExclusive(string key)

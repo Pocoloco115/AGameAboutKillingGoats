@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.IO;
 
-public static class ControlConfigManager
+public static class ConfigManager
 {
     private static ControlConfig _cached;
     private static string filePath => Path.Combine(Application.persistentDataPath, "controls.json");
@@ -40,6 +40,10 @@ public static class ControlConfigManager
             defaultConfig.bindings.Add(new ActionBinding { actionName = "Reload", key = KeyCode.R });
             defaultConfig.bindings.Add(new ActionBinding { actionName = "Crouch", key = KeyCode.C });
             defaultConfig.sliders.Add(new SliderBinding { sliderName = "Sensitivity", value = 5f });
+            defaultConfig.sliders.Add(new SliderBinding { sliderName = "MasterVol", value = 5f });
+            defaultConfig.sliders.Add(new SliderBinding { sliderName = "MusicVol", value = 5f });
+            defaultConfig.sliders.Add(new SliderBinding { sliderName = "SFXVol", value = 5f });
+            defaultConfig.sliders.Add(new SliderBinding { sliderName = "UIVol", value = 5f });
 
             SaveConfig(defaultConfig);
             return defaultConfig;
