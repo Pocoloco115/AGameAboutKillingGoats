@@ -22,3 +22,14 @@ public class SliderBinding
     public string sliderName;
     public float value;
 }
+
+[Serializable]
+public class GraphicsConfig
+{
+    public string qualityLevel = "Default";   
+    public int resolutionWidth = 1920;
+    public int resolutionHeight = 1080;
+    public bool fullscreen = true;
+    public bool vsync = true;
+    public int targetFPS = 60;
+}
