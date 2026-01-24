@@ -39,10 +39,10 @@ public class PlayerInputHandler : MonoBehaviour
         return lookAction.ReadValue<Vector2>().y * LookSensitivity;
     }
 
-    public bool GetJumpInputDown() => Input.GetKeyDown(ControlBindings.GetKey("Jump"));
-    public bool GetSprintInputHeld() => Input.GetKey(ControlBindings.GetKey("Sprint")) && GetMoveInput() != Vector2.zero;
-    public bool GetShootInputDown() => Input.GetKeyDown(ControlBindings.GetKey("Fire"));
-    public bool GetReloadInputDown() => Input.GetKeyDown(ControlBindings.GetKey("Reload"));
-    public bool GetCrouchInputToggled() => Input.GetKeyDown(ControlBindings.GetKey("Crouch"));
-    public bool GetCrouchInputHeld() => Input.GetKey(ControlBindings.GetKey("Crouch"));
+    public bool GetJumpInputDown() => Input.GetKeyDown(ControlBindings.GetKey("Jump")) && !PauseMenuHandler.IsPaused;
+    public bool GetSprintInputHeld() => Input.GetKey(ControlBindings.GetKey("Sprint")) && GetMoveInput() != Vector2.zero && !PauseMenuHandler.IsPaused;
+    public bool GetShootInputDown() => Input.GetKeyDown(ControlBindings.GetKey("Fire")) && !PauseMenuHandler.IsPaused;
+    public bool GetReloadInputDown() => Input.GetKeyDown(ControlBindings.GetKey("Reload")) && !PauseMenuHandler.IsPaused;
+    public bool GetCrouchInputToggled() => Input.GetKeyDown(ControlBindings.GetKey("Crouch")) && !PauseMenuHandler.IsPaused;
+    public bool GetCrouchInputHeld() => Input.GetKey(ControlBindings.GetKey("Crouch")) && !PauseMenuHandler.IsPaused;
 }

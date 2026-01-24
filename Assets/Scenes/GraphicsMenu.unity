@@ -860,7 +860,7 @@ PrefabInstance:
     - target: {fileID: 4661859956020847964, guid: cd5047e6bde0fce48b155511e872ae51, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1174022266}
+      objectReference: {fileID: 208764851427392305, guid: 4a29ce6fb23ed8d45962591393bf082e, type: 3}
     - target: {fileID: 4661859956020847964, guid: cd5047e6bde0fce48b155511e872ae51, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadScene
@@ -1984,50 +1984,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065234957}
   m_CullTransparentMesh: 1
---- !u!1 &1174022265
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1174022267}
-  - component: {fileID: 1174022266}
-  m_Layer: 0
-  m_Name: SceneHandler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1174022266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1174022265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a85654781ceeeb4d8701313cd47f8b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneHandler
---- !u!4 &1174022267
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1174022265}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1347.8015, y: 0, z: 3578.8076}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1180482330
 GameObject:
   m_ObjectHideFlags: 0
@@ -3965,7 +3921,7 @@ PrefabInstance:
     - target: {fileID: 6939110124076838663, guid: 0d034dc79a8020440b8b70cabb6c0d3e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1174022266}
+      objectReference: {fileID: 0}
     - target: {fileID: 6939110124076838663, guid: 0d034dc79a8020440b8b70cabb6c0d3e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -4423,4 +4379,3 @@ SceneRoots:
   - {fileID: 742775696}
   - {fileID: 826011631}
   - {fileID: 2136724443}
-  - {fileID: 1174022267}

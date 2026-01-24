@@ -101,7 +101,16 @@ public class Health : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DangerZone"))
         {
-            Die();
+            Debug.Log("Danger zone");
+            TakeDamage(100);
+        }
+    }
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(hit.gameObject.CompareTag("DangerZone"))
+        {
+            Debug.Log("Danger zone");
+            TakeDamage(100);
         }
     }
 }

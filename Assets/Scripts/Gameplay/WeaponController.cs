@@ -13,6 +13,12 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private PlayerInputHandler m_InputHandler;
     [SerializeField] private float fireRate = 0.3f;
     private float nextTimeToFire = 0f;
+    private int enemyCounter = 0;
+    public int EnemyCounter
+    {
+        get { return enemyCounter; }
+        set { enemyCounter = value; }
+    }
 
     [Header("Visual Effects")]
     [SerializeField] private GameObject impactEffectPrefab;
@@ -63,6 +69,7 @@ public class WeaponController : MonoBehaviour
         {
             if(hitInfo.collider.CompareTag("Enemy"))
             {
+                enemyCounter++;
                 hitInfo.collider.GetComponent<Health>().TakeDamage(damage);
             }
 
