@@ -11,14 +11,18 @@ public static class GraphicsConfigManager
     public static GraphicsConfig GetConfig()
     {
         if (_cached == null)
+        {
             _cached = LoadConfig();
+        }
         return _cached;
     }
 
     public static GraphicsConfig GetWorkingCopy()
     {
         if (_workingCopy == null)
+        {
             _workingCopy = GetConfig().Clone();
+        }
         return _workingCopy;
     }
 
@@ -28,12 +32,11 @@ public static class GraphicsConfigManager
 
         int qualityIndex = System.Array.IndexOf(QualitySettings.names, config.qualityLevel);
         if (qualityIndex >= 0)
+        {
             QualitySettings.SetQualityLevel(qualityIndex);
-
+        }
         Screen.SetResolution(config.resolutionWidth, config.resolutionHeight, config.fullscreen);
-
         Application.targetFrameRate = config.targetFPS > 0 ? config.targetFPS : -1;
-
         QualitySettings.vSyncCount = config.vsync ? 1 : 0;
     }
 
@@ -42,7 +45,6 @@ public static class GraphicsConfigManager
         _cached = GetWorkingCopy().Clone();
         string json = JsonUtility.ToJson(_cached, true);
         File.WriteAllText(filePath, json);
-
         ApplyCurrentSettings();
     }
 

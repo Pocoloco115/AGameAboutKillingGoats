@@ -70,11 +70,6 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if(exclusiveSource.isPlaying)
-        {
-            exclusiveSource.Stop();
-        }
-
         if (scene.name == "SampleScene")
         {
             if (musicSource.clip != backgroundMusic)
@@ -101,7 +96,10 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioClip clip)
     {
-        if (clip == null) return;
+        if (clip == null)
+        {
+            return;
+        }
         musicSource.clip = clip;
         musicSource.loop = true;
         musicSource.Play();
@@ -162,5 +160,60 @@ public class AudioManager : MonoBehaviour
     public void StopSFX()
     {
         sfxSource.Stop();
+    }
+    public void OnPause()
+    {
+        sfxSource.Pause();
+        exclusiveSource.Pause();
+
+        AudioSource[] allSources = Object.FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
+        foreach (AudioSource source in allSources)
+        {
+            if (source != musicSource)
+            {
+                source.Pause();
+            }
+        }
+        musicSource.volume *= 0.5f;
+        var filter = musicSource.gameObject.GetComponent<AudioLowPassFilter>();
+        if (filter == null)
+        {
+            filter = musicSource.gameObject.AddComponent<AudioLowPassFilter>();
+        }
+        filter.cutoffFrequency = 1000f;
+    }
+    public void OnResume()
+    {
+        Debug.Log("Resuming audio");
+        sfxSource.UnPause();
+        exclusiveSource.UnPause();
+        AudioSource[] allSources = Object.FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
+        foreach (AudioSource source in allSources)
+        {
+            if (source != musicSource)
+            {
+                source.UnPause();
+            }
+        }
+        ApplyVolumes();
+        var filter = musicSource.gameObject.GetComponent<AudioLowPassFilter>();
+        if (filter != null)
+        {
+            Destroy(filter);
+        }
+    }
+    public void StopAllSFX()
+    {
+        sfxSource.Stop();
+        exclusiveSource.Stop();
+
+        AudioSource[] audioSources = Object.FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
+        foreach (AudioSource source in audioSources)
+        {
+            if (source != musicSource)
+            {
+                source.Stop();
+            }
+        }
     }
 }

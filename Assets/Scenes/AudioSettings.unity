@@ -567,6 +567,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661859956020847964, guid: cd5047e6bde0fce48b155511e872ae51, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661859956020847964, guid: cd5047e6bde0fce48b155511e872ae51, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 208764851427392305, guid: 4a29ce6fb23ed8d45962591393bf082e, type: 3}
@@ -787,8 +791,40 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 138161745160331836, guid: cd5047e6bde0fce48b155511e872ae51, type: 3}
       insertIndex: -1
       addedObject: {fileID: 395605927}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5448050791113430311, guid: cd5047e6bde0fce48b155511e872ae51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 965906811}
   m_SourcePrefab: {fileID: 100100000, guid: cd5047e6bde0fce48b155511e872ae51, type: 3}
+--- !u!114 &965906809 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4661859956020847964, guid: cd5047e6bde0fce48b155511e872ae51, type: 3}
+  m_PrefabInstance: {fileID: 965906808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!1 &965906810 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5448050791113430311, guid: cd5047e6bde0fce48b155511e872ae51, type: 3}
+  m_PrefabInstance: {fileID: 965906808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &965906811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965906810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b129dd12eb555734c8b55eba2c613a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GenereicUI
+  mainMenu: {fileID: 965906809}
 --- !u!224 &1251924675 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5798217983363448631, guid: a5315d331a42f454d80dc9fa48f64276, type: 3}

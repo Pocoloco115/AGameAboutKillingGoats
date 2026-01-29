@@ -34,8 +34,12 @@ public class DamageVignette : MonoBehaviour
         hitCount++;
 
         if (hitCount == 1)
-            targetIntensity = 0.4f; 
+        {
+            targetIntensity = 0.4f;
+        }
         else
-            targetIntensity = 0.5f; 
+        {
+            targetIntensity = 0.5f;
+        }
     }
 }

@@ -12,7 +12,10 @@ public class DeathEffectHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Camera.main == null) return;
+        if (Camera.main == null)
+        {
+            return;
+        }
         transform.LookAt(Camera.main.transform);
         transform.forward = -Camera.main.transform.forward;
     }

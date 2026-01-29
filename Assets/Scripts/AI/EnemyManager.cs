@@ -44,7 +44,10 @@ public class EnemyManager : MonoBehaviour
 
     private void PlayerFollower()
     {
-        if (!isPlayerActive) return;
+        if (!isPlayerActive)
+        {
+            return;
+        }
         enemyRigidbody.transform.LookAt(player.transform);
         enemyRigidbody.AddForce(enemyRigidbody.transform.forward * speed, ForceMode.Acceleration);
     }

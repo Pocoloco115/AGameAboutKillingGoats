@@ -30,7 +30,10 @@ public class SliderManager : MonoBehaviour
         {
             _sliderText.text = v.ToString("0");
             var binding = ConfigManager.GetConfig().sliders.Find(s => s.sliderName == sliderKey);
-            if (binding != null) binding.value = v;
+            if (binding != null)
+            {
+                binding.value = v;
+            }
 
             ConfigManager.SaveConfig(ConfigManager.GetConfig());
 
@@ -38,7 +41,6 @@ public class SliderManager : MonoBehaviour
             {
                 AudioManager.Instance.ApplyVolumes();
             }
-               
         });
     }
 }

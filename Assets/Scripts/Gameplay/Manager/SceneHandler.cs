@@ -1,49 +1,160 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneHandler : MonoBehaviour
 {
-    private SceneHandler instance;
+    public static SceneHandler Instance { get; private set; }
 
-    void Awake()
+    [Header("Fade Settings")]
+    [SerializeField] private CanvasGroup fadeCanvasGroup;
+    [SerializeField] private float fadeDuration = 0.5f;
+    [SerializeField] private float minLoadingScreenTime = 3f;
+    public static string nextScene;
+
+    private void Awake()
     {
-        if (instance == null)
+        if (Instance != null && Instance != this)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+        PauseMenuHandler.IsPaused = false;
+
+        if (fadeCanvasGroup != null)
+        {
+            fadeCanvasGroup.alpha = 0f;
+            fadeCanvasGroup.interactable = false;
+            fadeCanvasGroup.blocksRaycasts = true;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Time.timeScale = 1f;
+
+        if (PauseMenuHandler.IsPaused)
+        {
+            PauseMenuHandler.IsPaused = false;
+            AudioManager.Instance.OnResume();
+        }
+
+        StartCoroutine(FadeOut());
+
+        if (scene.name == "LoadingScene" && !string.IsNullOrEmpty(nextScene))
+        {
+            StartCoroutine(LoadNextSceneAsync(nextScene));
+        }
+    }
+
+    private IEnumerator FadeIn()
+    {
+        if (fadeCanvasGroup == null) yield break;
+
+        fadeCanvasGroup.alpha = 0f;
+        float elapsed = 0f;
+
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            fadeCanvasGroup.alpha = Mathf.Clamp01(elapsed / fadeDuration);
+            yield return null;
+        }
+
+        fadeCanvasGroup.alpha = 1f;
+    }
+
+    private IEnumerator FadeOut()
+    {
+        if (fadeCanvasGroup == null) yield break;
+
+        float elapsed = fadeDuration;
+
+        while (elapsed > 0f)
+        {
+            elapsed -= Time.unscaledDeltaTime;
+            fadeCanvasGroup.alpha = Mathf.Clamp01(elapsed / fadeDuration);
+            yield return null;
+        }
+
+        fadeCanvasGroup.alpha = 0f;
+    }
+
+    private IEnumerator LoadNextSceneAsync(string targetScene)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(targetScene);
+        asyncLoad.allowSceneActivation = false;
+
+        float startTime = Time.unscaledTime;
+        bool sceneReady = false;
+        bool minTimePassed = false;
+
+        while (!asyncLoad.isDone)
+        {
+            if (asyncLoad.progress >= 0.9f)
+            {
+                sceneReady = true;
+            }
+
+            if (Time.unscaledTime - startTime >= minLoadingScreenTime)
+            {
+                minTimePassed = true;
+            }
+
+            if (sceneReady && minTimePassed)
+            {
+                asyncLoad.allowSceneActivation = true;
+            }
+
+            yield return null;
+        }
+    }
+
+    private IEnumerator FadeInAndLoad(string sceneName)
+    {
+        yield return StartCoroutine(FadeIn());
+
+        if (sceneName == "SampleScene" && SceneManager.GetActiveScene().name != "SampleScene")
+        {
+            nextScene = sceneName;
+            SceneManager.LoadScene("LoadingScene");
         }
         else
         {
-            Destroy(gameObject);
+            SceneManager.LoadScene(sceneName);
         }
-        SceneManager.sceneLoaded += (scene, mode) => OnSceneLoaded();
-        PauseMenuHandler.IsPaused = false;
-    }
-    private void OnSceneLoaded()
-    {
-        Time.timeScale = 1f;
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     public void LoadScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        StartCoroutine(FadeInAndLoad(sceneName));
     }
+
     public void Close()
     {
         Application.Quit();
     }
-    public void ReloadScene()
+
+    public void ReloadCurrentScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        string current = SceneManager.GetActiveScene().name;
+        LoadScene(current);
     }
 }

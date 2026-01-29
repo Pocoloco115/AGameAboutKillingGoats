@@ -25,7 +25,10 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        if (isDead) return;
+        if (isDead)
+        {
+            return;
+        }
         currentHealth -= damageAmount;
         Object.FindAnyObjectByType<DamageVignette>()?.OnHit();
         GetComponent<HealManager>()?.OnDamageTaken();
@@ -77,7 +80,10 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        if (isDead) return;
+        if (isDead)
+        {
+            return;
+        }
         isDead = true;
         GetComponent<DeathManager>()?.SetDeath();
     }

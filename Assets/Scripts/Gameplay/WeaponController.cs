@@ -41,7 +41,10 @@ public class WeaponController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isReloading) return;
+        if (isReloading)
+        {
+            return;
+        }
         if(m_InputHandler.GetShootInputDown() && Time.time >= nextTimeToFire)
         {
             HandleShootWeapon();

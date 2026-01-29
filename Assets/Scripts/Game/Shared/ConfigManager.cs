@@ -9,7 +9,9 @@ public static class ConfigManager
     public static ControlConfig GetConfig()
     {
         if (_cached == null)
+        {
             _cached = LoadConfig();
+        }
         return _cached;
     }
 

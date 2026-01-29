@@ -13,7 +13,10 @@ public class ControlMenuManager : MonoBehaviour
         foreach (Transform child in container)
         {
             var action = child.GetComponent<ControlActionPrefab>();
-            if (action == null) continue;
+            if (action == null)
+            {
+                continue;
+            }
 
             action.manager = this;
             action.OnKeyChanged += SaveConfig;
@@ -25,7 +28,9 @@ public class ControlMenuManager : MonoBehaviour
         {
             var action = actions.Find(a => a.ActionName == binding.actionName);
             if (action != null)
+            {
                 action.SetKey(binding.key);
+            }
         }
     }
 
@@ -52,8 +57,14 @@ public class ControlMenuManager : MonoBehaviour
     {
         foreach (var action in actions)
         {
-            if (action == requester) continue; 
-            if (action.CurrentKey == key) return true;
+            if (action == requester)
+            {
+                continue;
+            }
+            if (action.CurrentKey == key)
+            {
+                return true;
+            }
         }
         return false;
     }
@@ -70,7 +81,8 @@ public class ControlMenuManager : MonoBehaviour
     public void NotifyRebindFinished(ControlActionPrefab action)
     {
         if (currentRebindingAction == action)
+        {
             currentRebindingAction = null;
+        }
     }
-
 }

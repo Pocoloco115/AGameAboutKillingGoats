@@ -35,7 +35,10 @@ public class SettingSelector : MonoBehaviour
         {
             options = QualitySettings.names;
             currentIndex = System.Array.IndexOf(options, config.qualityLevel);
-            if (currentIndex < 0) currentIndex = QualitySettings.GetQualityLevel();
+            if (currentIndex < 0)
+            {
+                currentIndex = QualitySettings.GetQualityLevel();
+            }
         }
         else if (settingType == "Resolution")
         {
@@ -73,7 +76,10 @@ public class SettingSelector : MonoBehaviour
             options = new string[] { "30", "60", "120", "144", "Unlimited" };
             string fpsStr = config.targetFPS == -1 ? "Unlimited" : config.targetFPS.ToString();
             currentIndex = System.Array.IndexOf(options, fpsStr);
-            if (currentIndex < 0) currentIndex = 1;
+            if (currentIndex < 0)
+            {
+                currentIndex = 1;
+            }
         }
 
         UpdateValue();

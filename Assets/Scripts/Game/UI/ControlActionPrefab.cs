@@ -51,20 +51,33 @@ public class ControlActionPrefab : MonoBehaviour,
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (!isRebinding)
+        {
             highlightPanel.SetActive(true);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         if (!isRebinding)
+        {
             highlightPanel.SetActive(false);
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button != PointerEventData.InputButton.Left) return;
-        if (isRebinding) return;
-        if (manager != null && !manager.CanStartRebind(this)) return;
+        if (eventData.button != PointerEventData.InputButton.Left)
+        {
+            return;
+        }
+        if (isRebinding)
+        {
+            return;
+        }
+        if (manager != null && !manager.CanStartRebind(this))
+        {
+            return;
+        }
         StartRebind();
     }
 
@@ -75,7 +88,10 @@ public class ControlActionPrefab : MonoBehaviour,
         highlightPanel.SetActive(true);
         previousKey = CurrentKey;
 
-        if (blinkCoroutine != null) StopCoroutine(blinkCoroutine);
+        if (blinkCoroutine != null)
+        {
+            StopCoroutine(blinkCoroutine);
+        }
 
         blinkCoroutine = StartCoroutine(BlinkKeyText());
         Cursor.lockState = CursorLockMode.Locked;
@@ -94,10 +110,16 @@ public class ControlActionPrefab : MonoBehaviour,
 
     private void OnGUI()
     {
-        if (!isRebinding) return;
+        if (!isRebinding)
+        {
+            return;
+        }
 
         Event e = Event.current;
-        if (e == null) return;
+        if (e == null)
+        {
+            return;
+        }
 
         if (e.isKey)
         {
@@ -176,6 +198,8 @@ public class ControlActionPrefab : MonoBehaviour,
         manager?.NotifyRebindFinished(this);
 
         if (changed)
+        {
             OnKeyChanged?.Invoke();
+        }
     }
 }

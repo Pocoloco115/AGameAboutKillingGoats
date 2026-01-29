@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private float m_CameraVerticalAngle = 0f;
     private bool isCrouching = false;
     private float characterControllerOriginalHeight;
+    public static bool IsDead = false;
 
     void Start()
     {
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
         HandleCharacterMovement();
         HandleAnimations();
         HandleCrouchingInput();
+        IsDead = GetComponent<Health>().IsDead();
     }
 
     private void HandleCharacterMovement()

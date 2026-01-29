@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a85654781ceeeb4d8701313cd47f8b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  fadeCanvasGroup: {fileID: 223950636553929847, guid: 05c96fcad2f9cbc42bb3f576846b6d76, type: 3}

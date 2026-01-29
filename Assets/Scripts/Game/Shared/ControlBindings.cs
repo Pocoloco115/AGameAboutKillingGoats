@@ -10,7 +10,10 @@ public static class ControlBindings
     {
         get
         {
-            if (bindings == null) Load();
+            if (bindings == null)
+            {
+                Load();
+            }
             return sensitivity;
         }
         private set
@@ -25,10 +28,11 @@ public static class ControlBindings
 
         bindings = new Dictionary<string, KeyCode>();
         foreach (var b in config.bindings)
+        {
             bindings[b.actionName] = b.key;
-
+        }
         var slider = config.sliders.Find(s => s.sliderName == "Sensitivity");
-        Sensitivity = (slider != null ? slider.value : 5f) / 10f;
+        Sensitivity = (slider != null ? slider.value : 5f) / 20f;
     }
 
     public static void Reload()
@@ -39,15 +43,24 @@ public static class ControlBindings
 
     public static KeyCode GetKey(string actionName)
     {
-        if (bindings == null) Load();
+        if (bindings == null)
+        {
+            Load();
+        }
         return bindings.TryGetValue(actionName, out var key) ? key : KeyCode.None;
     }
 
     public static float GetAxis(string negative, string positive)
     {
         float value = 0f;
-        if (Input.GetKey(GetKey(negative))) value -= 1f;
-        if (Input.GetKey(GetKey(positive))) value += 1f;
+        if (Input.GetKey(GetKey(negative)))
+        {
+            value -= 1f;
+        }
+        if (Input.GetKey(GetKey(positive)))
+        {
+            value += 1f;
+        }
         return value;
     }
 }

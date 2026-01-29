@@ -10,6 +10,7 @@ public class DeathManager : MonoBehaviour
     [SerializeField] private GameObject? gameOverPanel;
     private Rigidbody rb;
     private Collider col;
+    public static bool isDead = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
