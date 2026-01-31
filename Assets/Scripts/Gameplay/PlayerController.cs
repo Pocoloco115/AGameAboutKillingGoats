@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInputHandler), typeof(WeaponController))]
 public class PlayerController : MonoBehaviour
