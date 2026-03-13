@@ -1,0 +1,713 @@
+fileFormatVersion: 2
+guid: 05e05249976fb5f4095787730a90f2bb
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: goat exploding spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 1608
+        width: 234
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f24aa47fc98924f47a8783b06af306c7
+      internalID: -1457570334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 1608
+        width: 234
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e0c85f417298a848826c25fc30565c2
+      internalID: -868678553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 1608
+        width: 234
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68fe0f0350922104d83779792317f638
+      internalID: -96274072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 1608
+        width: 234
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e254d50169ce5d459eab98fb15b910f
+      internalID: 2081654661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 1602
+        y: 1608
+        width: 234
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a28bdf1aa768f8b42bc76082e253d276
+      internalID: -1103937172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 1224
+        width: 234
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efa00db2e2a1c204c92844d007566ae9
+      internalID: -969076396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 1224
+        width: 234
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a3111cfddf3f89499018c1812a0f276
+      internalID: -1418607589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 1224
+        width: 234
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e2a91122d6671a4cab3dc55f311d78a
+      internalID: 375947345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 1224
+        width: 234
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 048b86245c2c47240a1dac389a8e3328
+      internalID: 536903236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 1602
+        y: 1224
+        width: 234
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26b944b51af20c148870e7e48f110f02
+      internalID: 137390803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 840
+        width: 234
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 595caabd911d4344597591bf42b26603
+      internalID: 1759239549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 840
+        width: 234
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 279ebe0a1f6e5344ab49c19a5cee3dc8
+      internalID: -2123546300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 828
+        width: 240
+        height: 246
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d2ddd3f3f008954c9b7f14892c0495c
+      internalID: -2040932025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 960
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7b38341587f232438063d491e6674ac
+      internalID: -193279230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 834
+        width: 252
+        height: 246
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc68d9a0d5ea881448c620405a67ceab
+      internalID: 508038067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 822
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db028717719cd7043be6b5bb6e9bd78c
+      internalID: -1579523289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 438
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b7da0d44e0c0ed40bee4ca748eeda1a
+      internalID: 497045640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 438
+        width: 264
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96139c2d58b04464f8e978f355e1450c
+      internalID: -712908090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 474
+        width: 240
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e89dcc0a4e2da0e4ebc85b9176adb259
+      internalID: 1845228899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 1222
+        y: 476
+        width: 251
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f40d1ade8efc5c4191d381444a01cc6
+      internalID: 1656761359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 476
+        width: 228
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f33d56de769304f47b50f656e787a7dd
+      internalID: 2122816041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 102
+        width: 222
+        height: 198
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35764e91bf76ace4fb4c0783ce3a55bf
+      internalID: 1064376683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goat exploding spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 98
+        width: 191
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f826654c83a84a4da823fb9ead2de85
+      internalID: -1430469302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: ad96bdcfd2fc36048bc2524bd8cba265
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      goat exploding spritesheet_0: -1457570334
+      goat exploding spritesheet_1: -868678553
+      goat exploding spritesheet_10: 1759239549
+      goat exploding spritesheet_11: -2123546300
+      goat exploding spritesheet_12: -2040932025
+      goat exploding spritesheet_13: -193279230
+      goat exploding spritesheet_14: 508038067
+      goat exploding spritesheet_15: -1579523289
+      goat exploding spritesheet_16: 497045640
+      goat exploding spritesheet_17: -712908090
+      goat exploding spritesheet_18: 1845228899
+      goat exploding spritesheet_19: 1656761359
+      goat exploding spritesheet_2: -96274072
+      goat exploding spritesheet_20: 2122816041
+      goat exploding spritesheet_21: 1064376683
+      goat exploding spritesheet_22: -1430469302
+      goat exploding spritesheet_23: 1439867089
+      goat exploding spritesheet_24: -449579012
+      goat exploding spritesheet_25: 688338045
+      goat exploding spritesheet_26: 2077446736
+      goat exploding spritesheet_27: 367737712
+      goat exploding spritesheet_28: 296410437
+      goat exploding spritesheet_29: -557881724
+      goat exploding spritesheet_3: 2081654661
+      goat exploding spritesheet_30: 626432264
+      goat exploding spritesheet_31: 205908263
+      goat exploding spritesheet_32: 1308164927
+      goat exploding spritesheet_33: -1003757193
+      goat exploding spritesheet_34: -1492822441
+      goat exploding spritesheet_35: 1901545051
+      goat exploding spritesheet_36: -661090461
+      goat exploding spritesheet_37: -742217459
+      goat exploding spritesheet_38: -1209163376
+      goat exploding spritesheet_39: -627469021
+      goat exploding spritesheet_4: -1103937172
+      goat exploding spritesheet_40: 1620314787
+      goat exploding spritesheet_41: -408525300
+      goat exploding spritesheet_42: -1906746358
+      goat exploding spritesheet_43: -1381179157
+      goat exploding spritesheet_44: -1160628343
+      goat exploding spritesheet_45: 821755195
+      goat exploding spritesheet_46: -758539414
+      goat exploding spritesheet_47: -1305781268
+      goat exploding spritesheet_48: 1247068300
+      goat exploding spritesheet_49: 84542387
+      goat exploding spritesheet_5: -969076396
+      goat exploding spritesheet_50: -1697039807
+      goat exploding spritesheet_51: 1148987882
+      goat exploding spritesheet_52: -1146684326
+      goat exploding spritesheet_53: 202156454
+      goat exploding spritesheet_54: 1779793416
+      goat exploding spritesheet_55: 1412101269
+      goat exploding spritesheet_56: -772849337
+      goat exploding spritesheet_57: 1385560080
+      goat exploding spritesheet_58: -1563571756
+      goat exploding spritesheet_59: 609559402
+      goat exploding spritesheet_6: -1418607589
+      goat exploding spritesheet_60: 1323984610
+      goat exploding spritesheet_61: -552095624
+      goat exploding spritesheet_62: 723705304
+      goat exploding spritesheet_63: 412841950
+      goat exploding spritesheet_64: -1934836189
+      goat exploding spritesheet_65: 1990811379
+      goat exploding spritesheet_66: 948352902
+      goat exploding spritesheet_67: -892953169
+      goat exploding spritesheet_68: 1638943879
+      goat exploding spritesheet_69: -1413418723
+      goat exploding spritesheet_7: 375947345
+      goat exploding spritesheet_70: -1797810152
+      goat exploding spritesheet_71: 1704367484
+      goat exploding spritesheet_72: 1641248021
+      goat exploding spritesheet_73: 626110673
+      goat exploding spritesheet_74: -257014895
+      goat exploding spritesheet_75: 716922479
+      goat exploding spritesheet_76: 1165959559
+      goat exploding spritesheet_77: 1591015104
+      goat exploding spritesheet_78: 2022670430
+      goat exploding spritesheet_79: -1983155701
+      goat exploding spritesheet_8: 536903236
+      goat exploding spritesheet_80: 1926121446
+      goat exploding spritesheet_81: -1873184340
+      goat exploding spritesheet_82: -1681444257
+      goat exploding spritesheet_83: -1894563624
+      goat exploding spritesheet_84: -812750160
+      goat exploding spritesheet_85: -1708969116
+      goat exploding spritesheet_86: 907864691
+      goat exploding spritesheet_87: -588992075
+      goat exploding spritesheet_9: 137390803
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

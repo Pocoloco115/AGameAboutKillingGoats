@@ -1,0 +1,65 @@
+{
+  "achievements": [
+    { 
+      "id": "goatfather", 
+      "title": "The Goatfather", 
+      "description": "Unlock all other achievements",
+      "icon" : "goatfather_icon" 
+    },
+    { 
+      "id": "tutorial", 
+      "title": "Tutorial Completed", 
+      "description": "Survive 10 minutes in a game",
+      "icon" : "tutorial_icon"
+    },
+    { 
+      "id": "lockin", 
+      "title": "Lock In", 
+      "description": "Kill 100 goats without moving",
+      "icon" : "lockin_icon"
+    },
+    { 
+      "id": "billy", 
+      "title": "Billy the Kid", 
+      "description": "Kill 200 goats without missing a shot",
+      "icon" : "billy_icon"
+    },
+    { 
+      "id": "sniper", 
+      "title": "Goat Sniper", 
+      "description": "50 long-range kills in a row",
+      "icon" : "sniper_icon"
+    },
+    { 
+      "id": "pacifist", 
+      "title": "Pacifist Survivor", 
+      "description": "Survive 5 minutes without shooting",
+      "icon" : "pacifist_icon"
+    },
+    { 
+      "id": "explosive", 
+      "title": "Explosive Friendship", 
+      "description": "Die to explosive goats 10 times",
+      "icon" : "explosive_icon"
+    },
+      
+    { 
+      "id": "speedrunner", 
+      "title": "Speedrunner", 
+      "description": "Kill 120 goats in under 3 minutes",
+      "icon" : "speedrunner_icon"
+    },
+    { 
+      "id": "dodger", 
+      "title": "Goat Dodger", 
+      "description": "Survive 2 minutes without being hit",
+      "icon" : "dodger_icon"
+    },
+    { 
+      "id": "slayer", 
+      "title": "Goat Slayer", 
+      "description": "Kill 1000 goats total",
+      "icon" : "slayer_icon" 
+    }
+  ]
+}

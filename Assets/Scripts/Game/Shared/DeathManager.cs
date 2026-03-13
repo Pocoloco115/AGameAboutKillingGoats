@@ -52,6 +52,7 @@ public class DeathManager : MonoBehaviour
     {
         if (gameObject.CompareTag("Player"))
         {
+            GameStats.Instance.addDeath();
             SetGameOver();
         }
         else
@@ -74,6 +75,10 @@ public class DeathManager : MonoBehaviour
     }
     private void DisplayGameOverPanel()
     {
+        Timer.Instance.IsTracking = false;
+        StatsUI.Instance.UpdateStats();
         gameOverPanel.SetActive(true);
+        GameStats.Instance.StopTracking();
+        GameStats.Instance.ResetStats();
     }
 }

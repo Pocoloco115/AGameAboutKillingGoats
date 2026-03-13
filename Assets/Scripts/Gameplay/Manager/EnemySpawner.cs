@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     [Header("Spawn Settings")]
     [SerializeField] private GameObject[] spawnerPoints;
     [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private float spawnInterval = 5f;
+    [SerializeField] private float spawnInterval = 1.5f;
     [SerializeField] private int maxEnemies = 10;
     private List<GameObject> enemies;
     // Start is called once before the first execution of Update after the MonoBehaviour is created

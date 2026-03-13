@@ -6,12 +6,13 @@ public class MenuUI : MonoBehaviour
     [SerializeField] private Button playButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button exitButton;
-
+    [SerializeField] private Button achievementsButton;
     private void Start()
     {
         playButton.onClick.RemoveAllListeners();
         exitButton.onClick.RemoveAllListeners();
         settingsButton.onClick.RemoveAllListeners();
+        achievementsButton.onClick.RemoveAllListeners();
 
         playButton.onClick.AddListener(() =>
         {
@@ -36,6 +37,14 @@ public class MenuUI : MonoBehaviour
             if(SceneHandler.Instance != null)
             {
                 SceneHandler.Instance.Close();
+            }
+        });
+
+        achievementsButton.onClick.AddListener(() =>
+        {
+            if (SceneHandler.Instance != null)
+            {
+                SceneHandler.Instance.LoadScene("Achievements");
             }
         });
     }

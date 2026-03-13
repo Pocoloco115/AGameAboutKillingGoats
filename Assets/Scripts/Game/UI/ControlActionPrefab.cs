@@ -45,7 +45,7 @@ public class ControlActionPrefab : MonoBehaviour,
     private void UpdateKeyText()
     {
         keyText.text = CurrentKey == KeyCode.None ? "?" : CurrentKey.ToString();
-        keyText.color = Color.black; 
+        keyText.color = Color.white; 
     }
 
     public void OnPointerEnter(PointerEventData eventData)

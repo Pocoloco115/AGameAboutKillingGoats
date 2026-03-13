@@ -11,7 +11,7 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private int ammo = 5;
     [SerializeField] private float reloadTime;
     [SerializeField] private PlayerInputHandler m_InputHandler;
-    [SerializeField] private float fireRate = 0.3f;
+    [SerializeField] private float fireRate = 0.1f;
     private float nextTimeToFire = 0f;
     private int enemyCounter = 0;
     public int EnemyCounter
@@ -66,13 +66,21 @@ public class WeaponController : MonoBehaviour
         }
         AudioManager.Instance.PlaySFX("Shoot");
         currentAmmo--;
+        GameStats.Instance.AddShotFired();
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo, range))
         {
             if(hitInfo.collider.CompareTag("Enemy"))
             {
+                int shotDistance = (int)Vector3.Distance(shootOrigin.position, hitInfo.point);
+                Debug.Log($"Hit enemy at distance: {shotDistance} units");
+                if (shotDistance >= 25)
+                {
+                    LongShotFeedback.Instance.Play();
+                }
                 enemyCounter++;
+                GameStats.Instance.AddGoatKill(shotDistance);
                 hitInfo.collider.GetComponent<Health>().TakeDamage(damage);
             }
 

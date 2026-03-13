@@ -38,6 +38,7 @@ public class Health : MonoBehaviour
         }
         if (gameObject.CompareTag("Player"))
         {
+            GameStats.Instance.AddHitTaken();
             AudioManager.Instance.PlaySFXExclusive("Hit");
         }
     }

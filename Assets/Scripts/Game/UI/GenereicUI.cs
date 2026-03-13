@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GenereicUI : MonoBehaviour
@@ -13,7 +14,15 @@ public class GenereicUI : MonoBehaviour
         {
             if(SceneHandler.Instance != null)
             {
-                SceneHandler.Instance.LoadScene("MainMenu");
+                if(SceneManager.GetActiveScene().name == "Achievements")
+                {
+                    SceneHandler.Instance.LoadScene("MainMenu");
+                    return;
+                }
+                else
+                {
+                    SceneHandler.Instance.LoadScene("SettingsMenu");
+                }
             }
         });
     }
