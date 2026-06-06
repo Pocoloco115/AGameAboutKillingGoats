@@ -37,6 +37,11 @@ public class SliderManager : MonoBehaviour
 
             ConfigManager.SaveConfig(ConfigManager.GetConfig());
 
+            if (sliderKey == "Sensitivity")
+            {
+                ControlBindings.Reload();
+            }
+
             if(AudioManager.Instance != null)
             {
                 AudioManager.Instance.ApplyVolumes();

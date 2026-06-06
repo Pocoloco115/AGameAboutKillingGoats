@@ -7,12 +7,11 @@ public class PlayerInputHandler : MonoBehaviour
     private InputAction moveAction;
     private InputAction lookAction;
 
-    public float LookSensitivity { get; private set; }
+    public float LookSensitivity => ControlBindings.Sensitivity;
 
     void Awake()
     {
         ControlBindings.Reload(); 
-        LookSensitivity = ControlBindings.Sensitivity;
 
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];

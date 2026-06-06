@@ -18,7 +18,7 @@ public static class ControlBindings
         }
         private set
         {
-            sensitivity = Mathf.Clamp(value, 0.1f, 1f);
+              sensitivity = Mathf.Clamp(value, 0.01f, 5f);
         }
     }
 
@@ -32,7 +32,8 @@ public static class ControlBindings
             bindings[b.actionName] = b.key;
         }
         var slider = config.sliders.Find(s => s.sliderName == "Sensitivity");
-        Sensitivity = (slider != null ? slider.value : 5f) / 20f;
+
+        Sensitivity = (slider != null ? slider.value : 5f) / 100f;
     }
 
     public static void Reload()

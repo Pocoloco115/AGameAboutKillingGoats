@@ -25,6 +25,7 @@ public class AudioManager : MonoBehaviour
 
     public float SFXSourceVol => sfxSource.volume;
     private Dictionary<string, AudioClip> sfxLibrary;
+    private List<AudioSource> pausedSources = new List<AudioSource>();
 
     void Awake()
     {
@@ -70,6 +71,8 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        PurgeTransientAudio();
+
         if (scene.name == "SampleScene")
         {
             if (musicSource.clip != backgroundMusic)
@@ -91,6 +94,47 @@ public class AudioManager : MonoBehaviour
             {
                 musicSource.Play();
             }
+
+            var existingFilter = musicSource.gameObject.GetComponent<AudioLowPassFilter>();
+            if (existingFilter != null)
+            {
+                Destroy(existingFilter);
+            }
+
+            pausedSources.Clear();
+            ApplyVolumes();
+        }
+    }
+
+    private void PurgeTransientAudio()
+    {
+        pausedSources.Clear();
+
+        if (sfxSource != null)
+        {
+            sfxSource.Stop();
+        }
+
+        if (exclusiveSource != null)
+        {
+            exclusiveSource.Stop();
+        }
+
+        AudioSource[] audioSources = Object.FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
+        foreach (AudioSource source in audioSources)
+        {
+            if (source == null || source == musicSource)
+            {
+                continue;
+            }
+
+            source.Stop();
+        }
+
+        var filter = musicSource != null ? musicSource.gameObject.GetComponent<AudioLowPassFilter>() : null;
+        if (filter != null)
+        {
+            Destroy(filter);
         }
     }
 
@@ -163,17 +207,22 @@ public class AudioManager : MonoBehaviour
     }
     public void OnPause()
     {
-        sfxSource.Pause();
-        exclusiveSource.Pause();
+        pausedSources.Clear();
 
         AudioSource[] allSources = Object.FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
         foreach (AudioSource source in allSources)
         {
-            if (source != musicSource)
+            if (source == musicSource) continue;
+            if (source.isPlaying)
             {
                 source.Pause();
+                pausedSources.Add(source);
             }
         }
+
+        if (sfxSource != null && sfxSource.isPlaying && !pausedSources.Contains(sfxSource)) pausedSources.Add(sfxSource);
+        if (exclusiveSource != null && exclusiveSource.isPlaying && !pausedSources.Contains(exclusiveSource)) pausedSources.Add(exclusiveSource);
+
         musicSource.volume *= 0.5f;
         var filter = musicSource.gameObject.GetComponent<AudioLowPassFilter>();
         if (filter == null)
@@ -185,16 +234,19 @@ public class AudioManager : MonoBehaviour
     public void OnResume()
     {
         Debug.Log("Resuming audio");
-        sfxSource.UnPause();
-        exclusiveSource.UnPause();
-        AudioSource[] allSources = Object.FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
-        foreach (AudioSource source in allSources)
+
+        for (int i = pausedSources.Count - 1; i >= 0; i--)
         {
-            if (source != musicSource)
+            var src = pausedSources[i];
+            if (src == null)
             {
-                source.UnPause();
+                pausedSources.RemoveAt(i);
+                continue;
             }
+            src.UnPause();
         }
+        pausedSources.Clear();
+
         ApplyVolumes();
         var filter = musicSource.gameObject.GetComponent<AudioLowPassFilter>();
         if (filter != null)
