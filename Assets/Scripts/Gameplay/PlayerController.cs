@@ -26,13 +26,10 @@ public class PlayerController : MonoBehaviour
     private bool isCrouching = false;
     private float characterControllerOriginalHeight;
     public static bool IsDead = false;
-    private Vector3 initialPosition;
     private bool movedFromStart = false;
 
     void Start()
     {
-        initialPosition = transform.position;
-        //CheckHorizontalMovement();
         m_Controller = GetComponent<CharacterController>();
         m_InputHandler = GetComponent<PlayerInputHandler>();
         m_WeaponController = GetComponent<WeaponController>();
@@ -120,6 +117,8 @@ public class PlayerController : MonoBehaviour
         {
             CharacterVelocity.y = 0f;
         }
+
+        CheckMovedFromStart();
     }
     private void HandleCrouchingInput()
     {
@@ -138,19 +137,21 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    /*private void CheckHorizontalMovement()
+    private void CheckMovedFromStart()
     {
         if (movedFromStart) return;
 
-        Vector3 moveInput = m_InputHandler.GetMoveInput();
+        Vector2 moveInput = m_InputHandler.GetMoveInput();
 
-        if (moveInput.x != 0f || moveInput.y != 0f)
+        if (Mathf.Abs(moveInput.x) > 0.01f)
         {
             movedFromStart = true;
-            GameStats.Instance.WasMovedFromStart = true;
-            Debug.Log("Player attempted movement");
+            if (GameStats.Instance != null)
+            {
+                GameStats.Instance.WasMovedFromStart = true;
+            }
         }
-    }*/
+    }
     private void HandleAnimations()
     {
         if (PlayerAnimator == null)

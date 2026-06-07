@@ -51,9 +51,6 @@ public class SceneHandler : MonoBehaviour
 
         if (PauseMenuHandler.IsPaused)
         {
-            // Clear the paused flag but do not automatically resume audio here.
-            // Resuming audio should only happen when the player explicitly resumes the game,
-            // otherwise changing scenes (e.g. returning to menu) would unpause audio unexpectedly.
             PauseMenuHandler.IsPaused = false;
         }
 
